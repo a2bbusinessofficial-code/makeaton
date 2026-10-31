@@ -84,6 +84,7 @@ npm run lint
    - *Authentication → Providers → Email*: keep **Confirm email** on. Set the minimum password length to **9** and leave required characters at **none**. The app itself enforces upper, lower and special characters. Supabase's strictest option also demands digits, which the brief does not.
    - *Authentication → Rate Limits*: raise the email limit (default 30/hour) for demos.
    - *Authentication → Emails → SMTP Settings*: enable custom SMTP: host `smtp.gmail.com`, port `465`, your Gmail address and a **Google App Password**. Supabase then sends sign-up, reset, invite and email-change emails through your Gmail.
+   - *Authentication → Emails → Templates*: paste the branded templates from [`supabase/templates/`](supabase/templates) (Confirm sign up, Reset password, Invite user, Change email address). Their `token_hash` links are verified by `/auth/confirm`, so they work on any device or browser.
 3. **Vercel:** import the GitHub repo and add every variable from `.env.example`. The build runs migrations and seeds the database automatically (`npm run build`). `vercel.json` schedules the daily job at 06:00 IST.
 
 ---
