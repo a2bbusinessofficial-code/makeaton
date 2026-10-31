@@ -1,5 +1,6 @@
 # Brightloop: Subscription Management System
 
+
 One system to run **plans, subscriptions, recurring billing, payments and revenue reporting** for a subscription business, built for the Odoo hackathon problem statement *"Subscription Management System"*.
 
 **Stack:** Next.js 15 (App Router, Server Actions) · TypeScript · PostgreSQL (Supabase) · Prisma · Supabase Auth · Tailwind CSS · Vitest. All amounts are in **₹ with GST**.
