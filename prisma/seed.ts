@@ -226,7 +226,8 @@ async function seedBook(c: Catalog) {
         const dueDate = addDays(periodStart, term.dueDays);
         const age = Math.round((NOW.getTime() - dueDate.getTime()) / 86_400_000);
         const r = rand();
-        const invState: InvoiceState = age > 60 ? (r < 0.95 ? "PAID" : r < 0.98 ? "CONFIRMED" : "CANCELLED") : age > 0 ? (r < 0.78 ? "PAID" : "CONFIRMED") : r < 0.45 ? "PAID" : "CONFIRMED";
+        // Realistic collections: old invoices are almost all paid, recent ones partly outstanding.
+        const invState: InvoiceState = age > 60 ? (r < 0.985 ? "PAID" : r < 0.995 ? "CONFIRMED" : "CANCELLED") : age > 0 ? (r < 0.88 ? "PAID" : "CONFIRMED") : r < 0.5 ? "PAID" : "CONFIRMED";
         const invoiceId = randomUUID();
         let amountPaid = invState === "PAID" ? pricing.total : 0;
         if (invState === "CONFIRMED" && chance(0.15)) amountPaid = Math.round(pricing.total / 2);

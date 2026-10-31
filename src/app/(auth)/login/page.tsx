@@ -34,6 +34,12 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           Log in
         </SubmitButton>
       </ActionForm>
+      {process.env.NEXT_PUBLIC_DEMO_MODE === "true" && (
+        <div className="mt-4 rounded-md bg-app px-3 py-2 text-xs text-ink-2">
+          <div className="mb-1 font-medium text-ink">Demo accounts · password Brightloop@2026</div>
+          admin@example.com · staff@example.com · customer@example.com
+        </div>
+      )}
       <p className="mt-4 text-center text-ink-3">
         New to Brightloop?{" "}
         <Link href="/signup" className="text-accent">
