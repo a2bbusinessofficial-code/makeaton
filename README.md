@@ -81,7 +81,8 @@ npm run lint
 1. **Supabase:** create a project. From *Project Settings → Database* copy the pooled (6543) and direct (5432) connection strings. From *Project Settings → API* copy the URL, anon key and service-role key.
 2. **Supabase Auth settings:**
    - *Authentication → URL Configuration*: Site URL = your Vercel URL; add `https://<your-app>.vercel.app/**` to Redirect URLs.
-   - *Authentication → Providers → Email*: keep **Confirm email** on. Set the password minimum length to 9 and require lowercase, uppercase and symbols.
+   - *Authentication → Providers → Email*: keep **Confirm email** on. Set the minimum password length to **9** and leave required characters at **none**. The app itself enforces upper, lower and special characters. Supabase's strictest option also demands digits, which the brief does not.
+   - *Authentication → Rate Limits*: raise the email limit (default 30/hour) for demos.
    - *Authentication → Emails → SMTP Settings*: enable custom SMTP: host `smtp.gmail.com`, port `465`, your Gmail address and a **Google App Password**. Supabase then sends sign-up, reset, invite and email-change emails through your Gmail.
 3. **Vercel:** import the GitHub repo and add every variable from `.env.example`. The build runs migrations and seeds the database automatically (`npm run build`). `vercel.json` schedules the daily job at 06:00 IST.
 
