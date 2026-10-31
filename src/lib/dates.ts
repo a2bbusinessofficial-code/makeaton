@@ -82,3 +82,10 @@ export const PERIOD_LABEL: Record<BillingPeriod, string> = {
   MONTHLY: "Monthly",
   YEARLY: "Yearly",
 };
+
+export const PERIOD_UNIT: Record<BillingPeriod, string> = {
+  DAILY: "day",
+  WEEKLY: "week",
+  MONTHLY: "month",
+  YEARLY: "year",
+};
