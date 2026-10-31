@@ -5,7 +5,7 @@ import { createContext, startTransition, useActionState, useContext, useEffect, 
 import { useFormStatus } from "react-dom";
 import { buttonClass } from "./button";
 
-export type ActionState = { error?: string; success?: string } | undefined;
+export type ActionState = { error?: string; success?: string; data?: Record<string, string> } | undefined;
 export type FormAction = (state: ActionState, formData: FormData) => Promise<ActionState>;
 
 /** Pending state of the enclosing ActionForm (useFormStatus only tracks native form actions). */
