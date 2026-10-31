@@ -1,0 +1,123 @@
+<template>
+  <style>
+    #root{position:absolute;inset:0;overflow:hidden;font-family:"Inter"}
+    
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-700-normal.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");font-weight:800}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-900-normal.woff2") format("woff2");font-weight:900}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2");font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+.ground{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.15) 1.6px,transparent 1.8px);background-size:30px 30px}
+.abs{position:absolute}
+.card{background:#fff;border:4px solid #111;box-shadow:10px 10px 0 #111}
+.pill{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 22px;border:3px solid #111;border-radius:999px;box-shadow:5px 5px 0 #111;font:700 26px/1 "Space Grotesk";letter-spacing:.07em;text-transform:uppercase;background:#fff;color:#111;white-space:nowrap}
+.pill img{width:30px;height:30px}
+.h1{font:900 84px/0.95 "Inter";letter-spacing:-0.03em;text-transform:uppercase;color:#111}
+.h2{font:900 56px/1 "Inter";letter-spacing:-0.025em;text-transform:uppercase;color:#111}
+.sticker{position:absolute;display:flex;align-items:center;gap:16px;padding:16px 24px;border:4px solid #111;box-shadow:8px 8px 0 #111;font:900 34px/1.05 "Inter";letter-spacing:-0.01em;text-transform:uppercase;color:#111;white-space:nowrap}
+.sticker .ico{width:54px;height:54px;border:3px solid #111;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.sticker .ico img{width:34px;height:34px}
+.sticker small{display:block;font:700 22px/1.25 "Space Grotesk";letter-spacing:.05em;margin-top:6px}
+.browser{position:absolute;background:#fff;border:4px solid #111;box-shadow:14px 14px 0 #111}
+.browser .bar{height:52px;border-bottom:4px solid #111;display:flex;align-items:center;gap:10px;padding:0 16px;background:#FFFBF2}
+.browser .bar i{width:18px;height:18px;border:3px solid #111;display:block}
+.browser .url{position:relative;margin-left:14px;flex:1;height:32px;border:3px solid #111;border-radius:999px;background:#fff;overflow:hidden}
+.browser .url span{position:absolute;left:16px;top:0;font:700 16px/26px "Space Grotesk";letter-spacing:.04em;color:#111;white-space:nowrap}
+.view{position:relative;overflow:hidden;background:#f7f7f7}
+.shot{position:absolute;left:0;top:0;width:1920px;transform-origin:0 0}
+.shot img{position:absolute;left:0;top:0;width:1920px}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.hl{position:absolute;left:0;top:0;border:6px solid #111;box-shadow:0 0 0 6px #FFDD72,8px 8px 0 6px #111;opacity:0;z-index:35;pointer-events:none}
+.cursor{position:absolute;left:0;top:0;width:46px;height:56px;z-index:60}
+.star{position:absolute;clip-path:polygon(50% 0%,61% 30%,95% 20%,72% 47%,98% 75%,63% 70%,50% 100%,37% 70%,2% 75%,28% 47%,5% 20%,39% 30%);background:#111}
+.star b{position:absolute;inset:7px;clip-path:inherit;display:block}
+.stripes{position:absolute;border:4px solid #111;background:repeating-linear-gradient(45deg,#111 0 10px,transparent 10px 26px)}
+.tick{display:inline-flex;width:46px;height:46px;border:3px solid #111;background:#fff;align-items:center;justify-content:center;flex:none}
+.tick img{width:30px;height:30px}
+.label{font:700 22px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;color:#111}
+.row{position:absolute;display:flex;align-items:center;gap:16px;padding:0 18px;height:76px;border:4px solid #111;box-shadow:6px 6px 0 #111;font:900 27px/1 "Inter";text-transform:uppercase;letter-spacing:-0.015em;white-space:nowrap}
+
+  </style>
+  <div id="root" data-composition-id="s11" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div class="ground" style="background:#FFDD72"></div>
+    <div class="dots"></div>
+    <div class="pill" id="s11-ch" style="left:90px;top:56px;background:#fff;z-index:50"><img src="assets/icons/chart-bar.svg" alt=""> Reporting</div>
+  
+  <div class="browser" id="s11b" style="left:90px;top:150px;width:1188px;z-index:20">
+    <div class="bar"><i style="background:#FFB3E1"></i><i style="background:#FFDD72"></i><i style="background:#B8EFA2"></i>
+      <div class="url"><span id="s11b-u0" style="opacity:1">makeaton.vercel.app/dashboard</span><span id="s11b-u1" style="opacity:0">makeaton.vercel.app/action-center</span></div></div>
+    <div class="view" style="width:1180px;height:664px"><div class="shot" id="s11b-shot" style="height:3023px"><img id="s11b-i0" src="assets/screens/b01-dashboard.png" style="opacity:1" alt=""><img id="s11b-i1" src="assets/full/b02-action-center.png" style="opacity:0" alt=""></div><div class="flash" id="s11b-fl"></div></div>
+  </div><div class="hl" id="s11-hl0"></div><div class="hl" id="s11-hl1"></div><div class="hl" id="s11-hl2"></div>
+  <div class="card abs" id="s11-mrr" style="left:1340px;top:120px;width:520px;padding:26px 30px;background:#FFDD72;z-index:30">
+    <div class="label">Monthly recurring revenue</div>
+    <div style="font:900 108px/1 Inter;letter-spacing:-0.04em;margin-top:12px">₹<span id="s11-n">0.00</span><span style="font-size:58px"> Cr</span></div>
+    <div class="pill" id="s11-arr" style="position:relative;display:inline-flex;margin-top:16px;background:#fff">ARR ₹28.2 Cr</div></div>
+  <div class="card abs" id="s11-s0" style="left:1340px;top:450px;width:490px;height:118px;padding:16px 22px;background:#B8EFA2;box-shadow:7px 7px 0 #111;z-index:30">
+      <div style="position:absolute;right:16px;top:16px;width:16px;height:16px;border-radius:50%;border:3px solid #111;background:#fff"></div>
+      <div class="label">Collected</div><div style="font:900 52px/1 Inter;letter-spacing:-0.03em;margin-top:10px">₹2.47 Cr · 103%</div></div><div class="card abs" id="s11-s1" style="left:1370px;top:590px;width:490px;height:118px;padding:16px 22px;background:#FFE7BA;box-shadow:7px 7px 0 #111;z-index:30">
+      <div style="position:absolute;right:16px;top:16px;width:16px;height:16px;border-radius:50%;border:3px solid #111;background:#fff"></div>
+      <div class="label">Still owed</div><div style="font:900 52px/1 Inter;letter-spacing:-0.03em;margin-top:10px">₹1.25 Cr</div></div><div class="card abs" id="s11-s2" style="left:1340px;top:730px;width:490px;height:118px;padding:16px 22px;background:#FFB3E1;box-shadow:7px 7px 0 #111;z-index:30">
+      <div style="position:absolute;right:16px;top:16px;width:16px;height:16px;border-radius:50%;border:3px solid #111;background:#fff"></div>
+      <div class="label">At risk</div><div style="font:900 52px/1 Inter;letter-spacing:-0.03em;margin-top:10px">₹1.06 Cr</div></div>
+  <div class="card abs" id="s11-csv" style="left:150px;top:600px;width:1040px;padding:22px 26px;background:#fff;z-index:45">
+    <div style="display:flex;align-items:center;gap:14px"><div class="pill" style="position:relative;background:#B8EFA2"><img src="assets/icons/table-export.svg" alt=""> Export CSV</div><div class="label">overdue-invoices.csv · 723 rows · same filters as the screen</div></div>
+    <div style="margin-top:16px;font:500 22px/1.55 'Space Grotesk';white-space:pre"><div class="s11row">Number          Customer                          Balance (INR)</div><div class="s11row">INV/2026/14227  Pooja Joshi (Joshi Retail)        877.92</div><div class="s11row">INV/2026/14310  Neha Kapoor (Kapoor Traders)      1745.22</div><div class="s11row">INV/2026/14306  Sneha Bhatt (Bhatt Electricals)   4311.72</div><div class="s11row">INV/2026/14184  Saanvi Shah                       2416.64</div></div></div>
+  </div>
+  <script>
+    (function(){
+    const tl = gsap.timeline({ paused: true });
+    
+function zs(g,px,py,z){ const S=g.s*z; let x=g.w/2-px*S, y=g.h/2-py*S;
+  x=Math.min(0,Math.max(g.w-1920*S,x)); y=Math.min(0,Math.max(g.h-g.H*S,y)); return {S,x,y}; }
+function zoom(tl,g,px,py,z,at,dur,ease){ const st=zs(g,px,py,z);
+  if(!dur) tl.set("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y},at);
+  else tl.to("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y,duration:dur,ease:ease||"power3.inOut"},at); }
+function pt(g,px,py,z3){ const st=zs(g,z3[0],z3[1],z3[2]); return [g.left+4+st.x+px*st.S, g.top+4+52+st.y+py*st.S]; }
+function swap(tl,g,a,b,at,mode){ const A="#"+g.id+"-i"+a, B="#"+g.id+"-i"+b;
+  if(mode==="whip"){ tl.to(A,{x:-300,opacity:0,duration:0.2,ease:"power3.in"},at); tl.fromTo(B,{x:300,opacity:0},{x:0,opacity:1,duration:0.36,ease:"expo.out"},at+0.14); }
+  else if(mode==="up"){ tl.to(A,{y:-200,opacity:0,duration:0.2,ease:"power3.in"},at); tl.fromTo(B,{y:200,opacity:0},{y:0,opacity:1,duration:0.36,ease:"expo.out"},at+0.14); }
+  else { tl.to(A,{opacity:0,duration:0.22,ease:"none"},at); tl.fromTo(B,{opacity:0},{opacity:1,duration:0.22,ease:"none"},at); }
+  tl.fromTo("#"+g.id+"-fl",{opacity:0.55},{opacity:0,duration:0.3,ease:"power2.out"},at+(mode?0.14:0)); }
+function url(tl,g,a,b,at){ tl.to("#"+g.id+"-u"+a,{opacity:0,y:-14,duration:0.16},at); tl.fromTo("#"+g.id+"-u"+b,{opacity:0,y:14},{opacity:1,y:0,duration:0.24,ease:"power3.out"},at+0.08); }
+function frameIn(tl,sel,at,f){ f=f||{}; tl.fromTo(sel,{opacity:0,y:f.y||0,x:f.x||0,rotation:f.r||0,scale:f.s||1},{opacity:1,y:0,x:0,rotation:0,scale:1,duration:0.85,ease:"expo.out"},at); }
+function push(tl,sel,at,s,dur){ tl.to(sel,{scale:s,duration:dur||1.2,ease:"power2.inOut"},at); }
+function stamp(tl,sel,at,r){ r=r||0; tl.fromTo(sel,{opacity:0,scale:1.6,rotation:r-8},{opacity:1,scale:1,rotation:r,duration:0.48,ease:"back.out(1.5)"},at); }
+function pop(tl,sel,at,r){ r=r||0; tl.fromTo(sel,{opacity:0,scale:0.35,rotation:r},{opacity:1,scale:1,rotation:r,duration:0.42,ease:"back.out(1.9)"},at); }
+function slideIn(tl,sel,at,dx,r,dy){ tl.fromTo(sel,{opacity:0,x:dx||0,y:dy||0,rotation:r||0},{opacity:1,x:0,y:0,rotation:r||0,duration:0.65,ease:"expo.out"},at); }
+function out(tl,sel,at,dy){ tl.to(sel,{opacity:0,y:dy===undefined?40:dy,duration:0.22,ease:"power2.in"},at); }
+function click(tl,cur,x,y,at,tr){ tr=tr||0.65; tl.to(cur,{x:x-4,y:y-3,duration:tr,ease:"power3.inOut"},at-tr-0.04);
+  tl.to(cur,{scale:0.78,duration:0.07,ease:"power2.in"},at); tl.to(cur,{scale:1,duration:0.18,ease:"back.out(2)"},at+0.07); }
+function hl(tl,id,g,x1,y1,x2,y2,z3,at,hold){ const a=pt(g,x1,y1,z3), b=pt(g,x2,y2,z3);
+  tl.set(id,{x:a[0]-10,y:a[1]-10,width:b[0]-a[0]+20,height:b[1]-a[1]+20},at);
+  tl.fromTo(id,{opacity:0,scale:1.25},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},at);
+  if(hold) tl.to(id,{opacity:0,duration:0.2},at+hold); }
+function count(tl,sel,from,to,at,dur,fmt){ const o={v:from}; tl.to(o,{v:to,duration:dur,ease:"power2.out",onUpdate:()=>{document.querySelector(sel).textContent=fmt(o.v);}},at); }
+const inr=(v)=>Math.round(v).toLocaleString("en-IN");
+
+    
+  const g={"id":"s11b","left":90,"top":150,"w":1180,"h":664,"s":0.6145833333333334,"H":3023};
+  zoom(tl,g,960,540,1,0,0);
+  pop(tl,"#s11-ch",0.05,-2); frameIn(tl,"#s11b",0.05,{y:-200,r:-2});
+  zoom(tl,g,443,297,2.1,1.80,0.7);
+  hl(tl,"#s11-hl0",g,241,251,645,343,[443,297,2.1],2.30,1.4);
+  tl.fromTo("#s11-mrr",{opacity:0,y:-300,rotation:-10},{opacity:1,y:0,rotation:-2,duration:0.7,ease:"back.out(1.3)"},2.15);
+  count(tl,"#s11-n",0,2.35,2.30,0.9,(v)=>v.toFixed(2));
+  pop(tl,"#s11-arr",3.06,0);
+  zoom(tl,g,1300,240,1.5,3.80,0.6);
+  hl(tl,"#s11-hl1",g,1074,143,1478,235,[1300,240,1.5],4.20,0.7);
+  hl(tl,"#s11-hl2",g,1491,143,1895,343,[1300,240,1.5],4.95,0.9);
+  const T=[4.13,4.90,5.50], R=[2,-2,1.5];
+  for(let k=0;k<3;k++) tl.fromTo("#s11-s"+k,{opacity:0,x:420,rotation:R[k]*4},{opacity:1,x:0,rotation:R[k],duration:0.6,ease:"expo.out"},T[k]);
+  zoom(tl,g,1620,480,1.7,5.70,0.5);
+  swap(tl,g,0,1,6.25,"up"); url(tl,g,0,1,6.25); zoom(tl,g,960,540,1,6.25,0.01);
+  zoom(tl,g,960,2500,1,6.50,1.4,"power2.inOut");
+  tl.fromTo("#s11-csv",{opacity:0,y:300,rotation:4},{opacity:1,y:0,rotation:-1,duration:0.7,ease:"back.out(1.2)"},7.50);
+  tl.fromTo(".s11row",{opacity:0,x:-30},{opacity:1,x:0,duration:0.25,stagger:0.08},7.80);
+  
+    window.__timelines["s11"] = tl;
+    })();
+  </script>
+</template>

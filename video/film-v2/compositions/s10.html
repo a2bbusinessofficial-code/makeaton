@@ -1,0 +1,127 @@
+<template>
+  <style>
+    #root{position:absolute;inset:0;overflow:hidden;font-family:"Inter"}
+    
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-700-normal.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");font-weight:800}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-900-normal.woff2") format("woff2");font-weight:900}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2");font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+.ground{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.15) 1.6px,transparent 1.8px);background-size:30px 30px}
+.abs{position:absolute}
+.card{background:#fff;border:4px solid #111;box-shadow:10px 10px 0 #111}
+.pill{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 22px;border:3px solid #111;border-radius:999px;box-shadow:5px 5px 0 #111;font:700 26px/1 "Space Grotesk";letter-spacing:.07em;text-transform:uppercase;background:#fff;color:#111;white-space:nowrap}
+.pill img{width:30px;height:30px}
+.h1{font:900 84px/0.95 "Inter";letter-spacing:-0.03em;text-transform:uppercase;color:#111}
+.h2{font:900 56px/1 "Inter";letter-spacing:-0.025em;text-transform:uppercase;color:#111}
+.sticker{position:absolute;display:flex;align-items:center;gap:16px;padding:16px 24px;border:4px solid #111;box-shadow:8px 8px 0 #111;font:900 34px/1.05 "Inter";letter-spacing:-0.01em;text-transform:uppercase;color:#111;white-space:nowrap}
+.sticker .ico{width:54px;height:54px;border:3px solid #111;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.sticker .ico img{width:34px;height:34px}
+.sticker small{display:block;font:700 22px/1.25 "Space Grotesk";letter-spacing:.05em;margin-top:6px}
+.browser{position:absolute;background:#fff;border:4px solid #111;box-shadow:14px 14px 0 #111}
+.browser .bar{height:52px;border-bottom:4px solid #111;display:flex;align-items:center;gap:10px;padding:0 16px;background:#FFFBF2}
+.browser .bar i{width:18px;height:18px;border:3px solid #111;display:block}
+.browser .url{position:relative;margin-left:14px;flex:1;height:32px;border:3px solid #111;border-radius:999px;background:#fff;overflow:hidden}
+.browser .url span{position:absolute;left:16px;top:0;font:700 16px/26px "Space Grotesk";letter-spacing:.04em;color:#111;white-space:nowrap}
+.view{position:relative;overflow:hidden;background:#f7f7f7}
+.shot{position:absolute;left:0;top:0;width:1920px;transform-origin:0 0}
+.shot img{position:absolute;left:0;top:0;width:1920px}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.hl{position:absolute;left:0;top:0;border:6px solid #111;box-shadow:0 0 0 6px #FFDD72,8px 8px 0 6px #111;opacity:0;z-index:35;pointer-events:none}
+.cursor{position:absolute;left:0;top:0;width:46px;height:56px;z-index:60}
+.star{position:absolute;clip-path:polygon(50% 0%,61% 30%,95% 20%,72% 47%,98% 75%,63% 70%,50% 100%,37% 70%,2% 75%,28% 47%,5% 20%,39% 30%);background:#111}
+.star b{position:absolute;inset:7px;clip-path:inherit;display:block}
+.stripes{position:absolute;border:4px solid #111;background:repeating-linear-gradient(45deg,#111 0 10px,transparent 10px 26px)}
+.tick{display:inline-flex;width:46px;height:46px;border:3px solid #111;background:#fff;align-items:center;justify-content:center;flex:none}
+.tick img{width:30px;height:30px}
+.label{font:700 22px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;color:#111}
+.row{position:absolute;display:flex;align-items:center;gap:16px;padding:0 18px;height:76px;border:4px solid #111;box-shadow:6px 6px 0 #111;font:900 27px/1 "Inter";text-transform:uppercase;letter-spacing:-0.015em;white-space:nowrap}
+
+  </style>
+  <div id="root" data-composition-id="s10" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div class="ground" style="background:#B8EFA2"></div>
+    <div class="dots"></div>
+    <div class="pill" id="s10-ch" style="left:90px;top:56px;background:#fff;z-index:50"><img src="assets/icons/building-bank.svg" alt=""> Payments & bank reconciliation</div>
+  
+  <div class="browser" id="s10b" style="left:90px;top:150px;width:1188px;z-index:20">
+    <div class="bar"><i style="background:#FFB3E1"></i><i style="background:#FFDD72"></i><i style="background:#B8EFA2"></i>
+      <div class="url"><span id="s10b-u0" style="opacity:1">makeaton.vercel.app/invoices/INV-2026-14432</span><span id="s10b-u1" style="opacity:0">makeaton.vercel.app/payments/reconcile</span></div></div>
+    <div class="view" style="width:1180px;height:664px"><div class="shot" id="s10b-shot" style="height:1080px"><img id="s10b-i0" src="assets/screens/g05-record-payment.png" style="opacity:1" alt=""><img id="s10b-i1" src="assets/screens/g06-invoice-paid.png" style="opacity:0" alt=""><img id="s10b-i2" src="assets/screens/h02-reconcile-upload.png" style="opacity:0" alt=""><img id="s10b-i3" src="assets/screens/h03-reconcile-file.png" style="opacity:0" alt=""><img id="s10b-i4" src="assets/screens/h04-reconcile-matches.png" style="opacity:0" alt=""><img id="s10b-i5" src="assets/screens/h05-reconcile-recorded.png" style="opacity:0" alt=""></div><div class="flash" id="s10b-fl"></div></div>
+  </div><div class="hl" id="s10-hl0"></div><div class="hl" id="s10-hl1"></div>
+  <div class="abs h2" id="s10-title" style="left:1340px;top:140px;width:520px">Money in</div>
+  <div class="row" id="s10-r0" style="left:1340px;top:290px;width:520px;background:#FFE7BA">
+      <div class="tick"><img src="assets/icons/credit-card.svg" alt=""></div><div>Any payment method</div></div><div class="row" id="s10-r1" style="left:1340px;top:386px;width:520px;background:#B8EFA2">
+      <div class="tick"><img src="assets/icons/check.svg" alt=""></div><div>Partly paid → paid</div></div><div class="row" id="s10-r2" style="left:1340px;top:482px;width:520px;background:#fff">
+      <div class="tick"><img src="assets/icons/file-spreadsheet.svg" alt=""></div><div>Upload bank CSV</div></div><div class="row" id="s10-r3" style="left:1340px;top:578px;width:520px;background:#AEE6FF">
+      <div class="tick"><img src="assets/icons/receipt.svg" alt=""></div><div>Match by invoice no.</div></div><div class="row" id="s10-r4" style="left:1340px;top:674px;width:520px;background:#FFDD72">
+      <div class="tick"><img src="assets/icons/search.svg" alt=""></div><div>…or name + amount</div></div><div class="row" id="s10-r5" style="left:1340px;top:770px;width:520px;background:#FFB3E1">
+      <div class="tick"><img src="assets/icons/building-bank.svg" alt=""></div><div>Record all, one click</div></div>
+  <svg class="cursor" id="s10-cur" viewBox="0 0 46 56"><path d="M4 3 L4 46 L15 35 L23 53 L31 49 L23 32 L39 32 Z" fill="#111" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
+  <div class="sticker" id="s10-ok" style="left:200px;top:820px;background:#B8EFA2;z-index:45;font-size:40px"><div class="ico"><img src="assets/icons/building-bank.svg" alt=""></div><div>5 payments · ₹2,42,480<small>NEVER MATCHES TWICE · NEVER GUESSES</small></div></div>
+  </div>
+  <script>
+    (function(){
+    const tl = gsap.timeline({ paused: true });
+    
+function zs(g,px,py,z){ const S=g.s*z; let x=g.w/2-px*S, y=g.h/2-py*S;
+  x=Math.min(0,Math.max(g.w-1920*S,x)); y=Math.min(0,Math.max(g.h-g.H*S,y)); return {S,x,y}; }
+function zoom(tl,g,px,py,z,at,dur,ease){ const st=zs(g,px,py,z);
+  if(!dur) tl.set("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y},at);
+  else tl.to("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y,duration:dur,ease:ease||"power3.inOut"},at); }
+function pt(g,px,py,z3){ const st=zs(g,z3[0],z3[1],z3[2]); return [g.left+4+st.x+px*st.S, g.top+4+52+st.y+py*st.S]; }
+function swap(tl,g,a,b,at,mode){ const A="#"+g.id+"-i"+a, B="#"+g.id+"-i"+b;
+  if(mode==="whip"){ tl.to(A,{x:-300,opacity:0,duration:0.2,ease:"power3.in"},at); tl.fromTo(B,{x:300,opacity:0},{x:0,opacity:1,duration:0.36,ease:"expo.out"},at+0.14); }
+  else if(mode==="up"){ tl.to(A,{y:-200,opacity:0,duration:0.2,ease:"power3.in"},at); tl.fromTo(B,{y:200,opacity:0},{y:0,opacity:1,duration:0.36,ease:"expo.out"},at+0.14); }
+  else { tl.to(A,{opacity:0,duration:0.22,ease:"none"},at); tl.fromTo(B,{opacity:0},{opacity:1,duration:0.22,ease:"none"},at); }
+  tl.fromTo("#"+g.id+"-fl",{opacity:0.55},{opacity:0,duration:0.3,ease:"power2.out"},at+(mode?0.14:0)); }
+function url(tl,g,a,b,at){ tl.to("#"+g.id+"-u"+a,{opacity:0,y:-14,duration:0.16},at); tl.fromTo("#"+g.id+"-u"+b,{opacity:0,y:14},{opacity:1,y:0,duration:0.24,ease:"power3.out"},at+0.08); }
+function frameIn(tl,sel,at,f){ f=f||{}; tl.fromTo(sel,{opacity:0,y:f.y||0,x:f.x||0,rotation:f.r||0,scale:f.s||1},{opacity:1,y:0,x:0,rotation:0,scale:1,duration:0.85,ease:"expo.out"},at); }
+function push(tl,sel,at,s,dur){ tl.to(sel,{scale:s,duration:dur||1.2,ease:"power2.inOut"},at); }
+function stamp(tl,sel,at,r){ r=r||0; tl.fromTo(sel,{opacity:0,scale:1.6,rotation:r-8},{opacity:1,scale:1,rotation:r,duration:0.48,ease:"back.out(1.5)"},at); }
+function pop(tl,sel,at,r){ r=r||0; tl.fromTo(sel,{opacity:0,scale:0.35,rotation:r},{opacity:1,scale:1,rotation:r,duration:0.42,ease:"back.out(1.9)"},at); }
+function slideIn(tl,sel,at,dx,r,dy){ tl.fromTo(sel,{opacity:0,x:dx||0,y:dy||0,rotation:r||0},{opacity:1,x:0,y:0,rotation:r||0,duration:0.65,ease:"expo.out"},at); }
+function out(tl,sel,at,dy){ tl.to(sel,{opacity:0,y:dy===undefined?40:dy,duration:0.22,ease:"power2.in"},at); }
+function click(tl,cur,x,y,at,tr){ tr=tr||0.65; tl.to(cur,{x:x-4,y:y-3,duration:tr,ease:"power3.inOut"},at-tr-0.04);
+  tl.to(cur,{scale:0.78,duration:0.07,ease:"power2.in"},at); tl.to(cur,{scale:1,duration:0.18,ease:"back.out(2)"},at+0.07); }
+function hl(tl,id,g,x1,y1,x2,y2,z3,at,hold){ const a=pt(g,x1,y1,z3), b=pt(g,x2,y2,z3);
+  tl.set(id,{x:a[0]-10,y:a[1]-10,width:b[0]-a[0]+20,height:b[1]-a[1]+20},at);
+  tl.fromTo(id,{opacity:0,scale:1.25},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},at);
+  if(hold) tl.to(id,{opacity:0,duration:0.2},at+hold); }
+function count(tl,sel,from,to,at,dur,fmt){ const o={v:from}; tl.to(o,{v:to,duration:dur,ease:"power2.out",onUpdate:()=>{document.querySelector(sel).textContent=fmt(o.v);}},at); }
+const inr=(v)=>Math.round(v).toLocaleString("en-IN");
+
+    
+  const g={"id":"s10b","left":90,"top":150,"w":1180,"h":664,"s":0.6145833333333334,"H":1080};
+  zoom(tl,g,1300,260,1.35,0,0);
+  pop(tl,"#s10-ch",0.05,-2); frameIn(tl,"#s10b",0.05,{y:180,r:2});
+  
+  tl.fromTo("#s10-title",{opacity:0,x:60},{opacity:1,x:0,duration:0.6,ease:"expo.out"},0.15);
+  const T=[0.50,1.50,2.70,4.65,5.50,7.47];
+  for(let k=0;k<T.length;k++) slideIn(tl,"#s10-r"+k,T[k],240,k%2?1:-1);
+  const p1=pt(g,1635,339,[1300,260,1.35]);
+  tl.fromTo("#s10-cur",{x:1000,y:1000,opacity:0},{opacity:1,duration:0.2},0.25);
+  click(tl,"#s10-cur",p1[0],p1[1],1.25,0.6);
+  swap(tl,g,0,1,1.32); zoom(tl,g,1050,330,1.6,1.40,0.6);
+  hl(tl,"#s10-hl0",g,1150,150,1250,200,[1050,330,1.6],1.80,0.9);
+  swap(tl,g,1,2,2.70,"whip"); url(tl,g,0,1,2.70); zoom(tl,g,700,200,1.7,2.70,0.5);
+  const p2=pt(g,307,200,[700,200,1.7]), p3=pt(g,613,200,[700,200,1.7]);
+  click(tl,"#s10-cur",p2[0],p2[1],3.40,0.5);
+  swap(tl,g,2,3,3.45);
+  click(tl,"#s10-cur",p3[0],p3[1],4.05,0.4);
+  swap(tl,g,3,4,4.15); zoom(tl,g,1150,420,1.25,4.20,0.6);
+  hl(tl,"#s10-hl0",g,1700,340,1820,512,[1150,420,1.25],4.80,1.4);
+  hl(tl,"#s10-hl1",g,1045,340,1460,512,[1150,420,1.25],5.60,1.0);
+  zoom(tl,g,1600,300,1.6,6.60,0.6);
+  const p4=pt(g,1754,276,[1600,300,1.6]);
+  click(tl,"#s10-cur",p4[0],p4[1],7.40,0.5);
+  swap(tl,g,4,5,7.50); zoom(tl,g,960,300,1.2,7.55,0.5);
+  tl.to("#s10-cur",{opacity:0,duration:0.2},7.90);
+  stamp(tl,"#s10-ok",7.80,-2);
+  
+    window.__timelines["s10"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,122 @@
+<template>
+  <style>
+    #root{position:absolute;inset:0;overflow:hidden;font-family:"Inter"}
+    
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-700-normal.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");font-weight:800}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-900-normal.woff2") format("woff2");font-weight:900}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2");font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+.ground{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.15) 1.6px,transparent 1.8px);background-size:30px 30px}
+.abs{position:absolute}
+.card{background:#fff;border:4px solid #111;box-shadow:10px 10px 0 #111}
+.pill{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 22px;border:3px solid #111;border-radius:999px;box-shadow:5px 5px 0 #111;font:700 26px/1 "Space Grotesk";letter-spacing:.07em;text-transform:uppercase;background:#fff;color:#111;white-space:nowrap}
+.pill img{width:30px;height:30px}
+.h1{font:900 84px/0.95 "Inter";letter-spacing:-0.03em;text-transform:uppercase;color:#111}
+.h2{font:900 56px/1 "Inter";letter-spacing:-0.025em;text-transform:uppercase;color:#111}
+.sticker{position:absolute;display:flex;align-items:center;gap:16px;padding:16px 24px;border:4px solid #111;box-shadow:8px 8px 0 #111;font:900 34px/1.05 "Inter";letter-spacing:-0.01em;text-transform:uppercase;color:#111;white-space:nowrap}
+.sticker .ico{width:54px;height:54px;border:3px solid #111;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.sticker .ico img{width:34px;height:34px}
+.sticker small{display:block;font:700 22px/1.25 "Space Grotesk";letter-spacing:.05em;margin-top:6px}
+.browser{position:absolute;background:#fff;border:4px solid #111;box-shadow:14px 14px 0 #111}
+.browser .bar{height:52px;border-bottom:4px solid #111;display:flex;align-items:center;gap:10px;padding:0 16px;background:#FFFBF2}
+.browser .bar i{width:18px;height:18px;border:3px solid #111;display:block}
+.browser .url{position:relative;margin-left:14px;flex:1;height:32px;border:3px solid #111;border-radius:999px;background:#fff;overflow:hidden}
+.browser .url span{position:absolute;left:16px;top:0;font:700 16px/26px "Space Grotesk";letter-spacing:.04em;color:#111;white-space:nowrap}
+.view{position:relative;overflow:hidden;background:#f7f7f7}
+.shot{position:absolute;left:0;top:0;width:1920px;transform-origin:0 0}
+.shot img{position:absolute;left:0;top:0;width:1920px}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.hl{position:absolute;left:0;top:0;border:6px solid #111;box-shadow:0 0 0 6px #FFDD72,8px 8px 0 6px #111;opacity:0;z-index:35;pointer-events:none}
+.cursor{position:absolute;left:0;top:0;width:46px;height:56px;z-index:60}
+.star{position:absolute;clip-path:polygon(50% 0%,61% 30%,95% 20%,72% 47%,98% 75%,63% 70%,50% 100%,37% 70%,2% 75%,28% 47%,5% 20%,39% 30%);background:#111}
+.star b{position:absolute;inset:7px;clip-path:inherit;display:block}
+.stripes{position:absolute;border:4px solid #111;background:repeating-linear-gradient(45deg,#111 0 10px,transparent 10px 26px)}
+.tick{display:inline-flex;width:46px;height:46px;border:3px solid #111;background:#fff;align-items:center;justify-content:center;flex:none}
+.tick img{width:30px;height:30px}
+.label{font:700 22px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;color:#111}
+.row{position:absolute;display:flex;align-items:center;gap:16px;padding:0 18px;height:76px;border:4px solid #111;box-shadow:6px 6px 0 #111;font:900 27px/1 "Inter";text-transform:uppercase;letter-spacing:-0.015em;white-space:nowrap}
+
+  </style>
+  <div id="root" data-composition-id="s07" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div class="ground" style="background:#AEE6FF"></div>
+    <div class="dots"></div>
+    <div class="pill" id="s07-ch" style="left:90px;top:56px;background:#fff;z-index:50"><img src="assets/icons/calendar-repeat.svg" alt=""> Subscriptions</div>
+  <div class="card abs" id="s07-t0" style="left:500px;top:40px;width:248px;height:120px;padding:14px 18px;background:#FFE7BA;box-shadow:7px 7px 0 #111">
+      <div class="label">Draft</div><div id="s07-n0" style="font:900 52px/1 Inter;letter-spacing:-0.03em;margin-top:12px">0</div></div><div class="card abs" id="s07-t1" style="left:774px;top:40px;width:248px;height:120px;padding:14px 18px;background:#AEE6FF;box-shadow:7px 7px 0 #111">
+      <div class="label">Quotation</div><div id="s07-n1" style="font:900 52px/1 Inter;letter-spacing:-0.03em;margin-top:12px">0</div></div><div class="card abs" id="s07-t2" style="left:1048px;top:40px;width:248px;height:120px;padding:14px 18px;background:#FFB3E1;box-shadow:7px 7px 0 #111">
+      <div class="label">Confirmed</div><div id="s07-n2" style="font:900 52px/1 Inter;letter-spacing:-0.03em;margin-top:12px">0</div></div><div class="card abs" id="s07-t3" style="left:1322px;top:40px;width:248px;height:120px;padding:14px 18px;background:#B8EFA2;box-shadow:7px 7px 0 #111">
+      <div class="label">Active</div><div id="s07-n3" style="font:900 52px/1 Inter;letter-spacing:-0.03em;margin-top:12px">0</div></div><div class="card abs" id="s07-t4" style="left:1596px;top:40px;width:248px;height:120px;padding:14px 18px;background:#fff;box-shadow:7px 7px 0 #111">
+      <div class="label">Closed</div><div id="s07-n4" style="font:900 52px/1 Inter;letter-spacing:-0.03em;margin-top:12px">0</div></div>
+  
+  <div class="browser" id="s07b" style="left:90px;top:300px;width:1158px;z-index:20">
+    <div class="bar"><i style="background:#FFB3E1"></i><i style="background:#FFDD72"></i><i style="background:#B8EFA2"></i>
+      <div class="url"><span id="s07b-u0" style="opacity:1">makeaton.vercel.app/subscriptions/new</span><span id="s07b-u1" style="opacity:0">makeaton.vercel.app/subscriptions/SUB-2026-02426</span><span id="s07b-u2" style="opacity:0">makeaton.vercel.app/subscriptions/SUB-2026-00135</span><span id="s07b-u3" style="opacity:0">makeaton.vercel.app/subscriptions/SUB-2026-01356</span></div></div>
+    <div class="view" style="width:1150px;height:647px"><div class="shot" id="s07b-shot" style="height:1080px"><img id="s07b-i0" src="assets/screens/k01-new-quotation.png" style="opacity:1" alt=""><img id="s07b-i1" src="assets/screens/k02-draft.png" style="opacity:0" alt=""><img id="s07b-i2" src="assets/screens/k03-quotation-sent.png" style="opacity:0" alt=""><img id="s07b-i3" src="assets/screens/e05-quote-expired-blocked.png" style="opacity:0" alt=""><img id="s07b-i4" src="assets/screens/e06-discount-applied.png" style="opacity:0" alt=""><img id="s07b-i5" src="assets/screens/e07-discount-not-applied.png" style="opacity:0" alt=""><img id="s07b-i6" src="assets/screens/e08-paused.png" style="opacity:0" alt=""><img id="s07b-i7" src="assets/screens/e09-renewed.png" style="opacity:0" alt=""></div><div class="flash" id="s07b-fl"></div></div>
+  </div><div class="hl" id="s07-hl0"></div><div class="hl" id="s07-hl1"></div>
+  <div class="row" id="s07-r0" style="left:1310px;top:300px;width:540px;background:#FFE7BA"><div class="tick"><img src="assets/icons/file-text.svg" alt=""></div><div>Start from a template</div></div><div class="row" id="s07-r1" style="left:1310px;top:400px;width:540px;background:#fff"><div class="tick"><img src="assets/icons/arrows-exchange.svg" alt=""></div><div>Five-step pipeline</div></div><div class="row" id="s07-r2" style="left:1310px;top:500px;width:540px;background:#FFB3E1"><div class="tick"><img src="assets/icons/ban.svg" alt=""></div><div>Expired quote blocked</div></div><div class="row" id="s07-r3" style="left:1310px;top:600px;width:540px;background:#FFDD72"><div class="tick"><img src="assets/icons/percentage.svg" alt=""></div><div>Live discount preview</div></div><div class="row" id="s07-r4" style="left:1310px;top:700px;width:540px;background:#B8EFA2"><div class="tick"><img src="assets/icons/player-pause.svg" alt=""></div><div>Pause · renew · close</div></div><div class="row" id="s07-r5" style="left:1310px;top:800px;width:540px;background:#fff"><div class="tick"><img src="assets/icons/clock.svg" alt=""></div><div>Full audit timeline</div></div>
+  <div class="sticker" id="s07-blk" style="left:330px;top:640px;background:#FFB3E1;z-index:45;font-size:48px;border-width:6px"><div class="ico"><img src="assets/icons/ban.svg" alt=""></div>Expired → can't confirm</div>
+  <div class="sticker" id="s07-d1" style="left:160px;top:850px;background:#B8EFA2;z-index:45;font-size:30px">− ₹3,747.50 on next invoice</div>
+  <div class="sticker" id="s07-d2" style="left:160px;top:850px;background:#FFE7BA;z-index:45;font-size:30px">Not applied: below minimum quantity</div>
+  </div>
+  <script>
+    (function(){
+    const tl = gsap.timeline({ paused: true });
+    
+function zs(g,px,py,z){ const S=g.s*z; let x=g.w/2-px*S, y=g.h/2-py*S;
+  x=Math.min(0,Math.max(g.w-1920*S,x)); y=Math.min(0,Math.max(g.h-g.H*S,y)); return {S,x,y}; }
+function zoom(tl,g,px,py,z,at,dur,ease){ const st=zs(g,px,py,z);
+  if(!dur) tl.set("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y},at);
+  else tl.to("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y,duration:dur,ease:ease||"power3.inOut"},at); }
+function pt(g,px,py,z3){ const st=zs(g,z3[0],z3[1],z3[2]); return [g.left+4+st.x+px*st.S, g.top+4+52+st.y+py*st.S]; }
+function swap(tl,g,a,b,at,mode){ const A="#"+g.id+"-i"+a, B="#"+g.id+"-i"+b;
+  if(mode==="whip"){ tl.to(A,{x:-300,opacity:0,duration:0.2,ease:"power3.in"},at); tl.fromTo(B,{x:300,opacity:0},{x:0,opacity:1,duration:0.36,ease:"expo.out"},at+0.14); }
+  else if(mode==="up"){ tl.to(A,{y:-200,opacity:0,duration:0.2,ease:"power3.in"},at); tl.fromTo(B,{y:200,opacity:0},{y:0,opacity:1,duration:0.36,ease:"expo.out"},at+0.14); }
+  else { tl.to(A,{opacity:0,duration:0.22,ease:"none"},at); tl.fromTo(B,{opacity:0},{opacity:1,duration:0.22,ease:"none"},at); }
+  tl.fromTo("#"+g.id+"-fl",{opacity:0.55},{opacity:0,duration:0.3,ease:"power2.out"},at+(mode?0.14:0)); }
+function url(tl,g,a,b,at){ tl.to("#"+g.id+"-u"+a,{opacity:0,y:-14,duration:0.16},at); tl.fromTo("#"+g.id+"-u"+b,{opacity:0,y:14},{opacity:1,y:0,duration:0.24,ease:"power3.out"},at+0.08); }
+function frameIn(tl,sel,at,f){ f=f||{}; tl.fromTo(sel,{opacity:0,y:f.y||0,x:f.x||0,rotation:f.r||0,scale:f.s||1},{opacity:1,y:0,x:0,rotation:0,scale:1,duration:0.85,ease:"expo.out"},at); }
+function push(tl,sel,at,s,dur){ tl.to(sel,{scale:s,duration:dur||1.2,ease:"power2.inOut"},at); }
+function stamp(tl,sel,at,r){ r=r||0; tl.fromTo(sel,{opacity:0,scale:1.6,rotation:r-8},{opacity:1,scale:1,rotation:r,duration:0.48,ease:"back.out(1.5)"},at); }
+function pop(tl,sel,at,r){ r=r||0; tl.fromTo(sel,{opacity:0,scale:0.35,rotation:r},{opacity:1,scale:1,rotation:r,duration:0.42,ease:"back.out(1.9)"},at); }
+function slideIn(tl,sel,at,dx,r,dy){ tl.fromTo(sel,{opacity:0,x:dx||0,y:dy||0,rotation:r||0},{opacity:1,x:0,y:0,rotation:r||0,duration:0.65,ease:"expo.out"},at); }
+function out(tl,sel,at,dy){ tl.to(sel,{opacity:0,y:dy===undefined?40:dy,duration:0.22,ease:"power2.in"},at); }
+function click(tl,cur,x,y,at,tr){ tr=tr||0.65; tl.to(cur,{x:x-4,y:y-3,duration:tr,ease:"power3.inOut"},at-tr-0.04);
+  tl.to(cur,{scale:0.78,duration:0.07,ease:"power2.in"},at); tl.to(cur,{scale:1,duration:0.18,ease:"back.out(2)"},at+0.07); }
+function hl(tl,id,g,x1,y1,x2,y2,z3,at,hold){ const a=pt(g,x1,y1,z3), b=pt(g,x2,y2,z3);
+  tl.set(id,{x:a[0]-10,y:a[1]-10,width:b[0]-a[0]+20,height:b[1]-a[1]+20},at);
+  tl.fromTo(id,{opacity:0,scale:1.25},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},at);
+  if(hold) tl.to(id,{opacity:0,duration:0.2},at+hold); }
+function count(tl,sel,from,to,at,dur,fmt){ const o={v:from}; tl.to(o,{v:to,duration:dur,ease:"power2.out",onUpdate:()=>{document.querySelector(sel).textContent=fmt(o.v);}},at); }
+const inr=(v)=>Math.round(v).toLocaleString("en-IN");
+
+    
+  const g={"id":"s07b","left":90,"top":300,"w":1150,"h":647,"s":0.5989583333333334,"H":1080};
+  zoom(tl,g,577,330,1.5,0,0);
+  pop(tl,"#s07-ch",0.05,-2); frameIn(tl,"#s07b",0.1,{y:200,r:-2});
+  const N=[161,166,153,2285,235];
+  for(let k=0;k<5;k++){ tl.fromTo("#s07-t"+k,{opacity:0,y:-160,rotation:k%2?6:-6},{opacity:1,y:0,rotation:k%2?1:-1,duration:0.6,ease:"back.out(1.5)"},0.1+k*0.08);
+    count(tl,"#s07-n"+k,0,N[k],0.3+k*0.08,1.1,(v)=>inr(v)); }
+  for(let k=0;k<4;k++) tl.fromTo("#s07-t"+k,{scale:1},{scale:1.1,duration:0.18,yoyo:true,repeat:1,ease:"power2.out"},1.90+k*0.28);
+  const T=[0.50,1.80,4.12,5.94,7.54,9.30];
+  for(let k=0;k<6;k++) slideIn(tl,"#s07-r"+k,T[k],260,k%2?1:-1);
+  swap(tl,g,0,1,1.35); url(tl,g,0,1,1.35); zoom(tl,g,960,280,1.15,1.35,0.6);
+  swap(tl,g,1,2,2.50);
+  hl(tl,"#s07-hl0",g,240,72,596,100,[960,280,1.15],2.60,1.2);
+  swap(tl,g,2,3,4.00,"whip"); url(tl,g,1,2,4.00); zoom(tl,g,1450,200,1.3,4.00,0.5);
+  stamp(tl,"#s07-blk",4.30,-5); out(tl,"#s07-blk",5.65,-40);
+  swap(tl,g,3,4,5.80,"whip"); url(tl,g,2,0,5.80); zoom(tl,g,1725,250,2.0,5.80,0.6);
+  hl(tl,"#s07-hl1",g,1565,168,1890,210,[1725,250,2.0],6.30,1.3);
+  stamp(tl,"#s07-d1",6.20,-2); out(tl,"#s07-d1",6.90);
+  swap(tl,g,4,5,6.90); url(tl,g,0,3,6.90); stamp(tl,"#s07-d2",7.00,2); out(tl,"#s07-d2",7.70);
+  swap(tl,g,5,6,7.70,"up"); zoom(tl,g,1650,120,1.8,7.70,0.5);
+  swap(tl,g,6,7,8.60); zoom(tl,g,960,250,1.3,8.60,0.5);
+  zoom(tl,g,1725,640,1.9,9.30,0.7);
+  
+    window.__timelines["s07"] = tl;
+    })();
+  </script>
+</template>

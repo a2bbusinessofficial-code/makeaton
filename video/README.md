@@ -10,6 +10,8 @@
 | `screens/` | 1920×1080 captures of every page: `public/`, `admin/`, `customer/`, and `actions/` (live interactions such as billing runs and payments) |
 | `tools/` | Scripts used to capture the screens and build the storyboard |
 | `brightloop-demo.mp4` | **The rendered film** (95 s, 1080p, pastel neo-brutalism) |
+| `brightloop-investor-demo.mp4` | **Investor demo v2** (2:02, 1080p): every feature area, more zooms and transitions, real screens from the latest `main` |
+| `film-v2/` | HyperFrames project for v2. `node build/build.mjs` regenerates it; script in `film-v2/SCRIPT.md`, notes in `film-v2/REVIEW.md` |
 | `film/` | HyperFrames project for the film. `node build/build.mjs` regenerates `index.html` + `compositions/`; `npx hyperframes preview` opens it in Studio; `npx hyperframes render -o out.mp4` renders. See `film/REVIEW.md`. |
 
 Music: NIVIRO – Flares [NCS Release], provided by NoCopyrightSounds. Credit it wherever the video is published.
