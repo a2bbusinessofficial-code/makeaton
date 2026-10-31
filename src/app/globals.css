@@ -15,10 +15,14 @@
   --color-accent: #1961ed;
   --color-accent-soft: #e8efff;
   --color-danger: #c4161c;
-  --text-ui: 0.8125rem;
+  --text-ui: 13px;
 }
 
-html,
+html {
+  background: var(--color-app);
+}
+
+/* 13px UI text like Twenty; rem stays 16px so spacing and control heights are not shrunk. */
 body {
   background: var(--color-app);
   color: var(--color-ink);

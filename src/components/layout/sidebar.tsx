@@ -12,9 +12,9 @@ import {
   IconFileInvoice,
   IconFileText,
   IconLayoutDashboard,
+  IconLogout,
   IconPlayerPlay,
   IconReceiptTax,
-  IconSettings,
   IconUserCircle,
   IconUsers,
   IconUsersGroup,
@@ -91,7 +91,7 @@ export function Sidebar({ name, role }: { name: string; role: "ADMIN" | "STAFF" 
         </Link>
         <form action="/auth/signout" method="post">
           <button className="flex h-7 w-full items-center gap-2 rounded px-2 text-ink-2 hover:bg-hover">
-            <IconSettings size={16} stroke={1.6} />
+            <IconLogout size={16} stroke={1.6} />
             Sign out
           </button>
         </form>
