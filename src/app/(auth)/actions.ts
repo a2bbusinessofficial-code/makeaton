@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 import { env } from "@/lib/env";
 import { sendMail } from "@/lib/mail/mailer";
 import { passwordChangedEmail } from "@/lib/mail/templates";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { emailSchema, firstError, formToObject, newPasswordSchema, signUpSchema } from "@/lib/validation";
 
@@ -36,7 +37,30 @@ export async function signUpAction(_: ActionState, form: FormData): Promise<Acti
 
   await ensureProfile(data.user);
   if (data.session) redirect("/portal");
-  return { success: `Almost there! We sent a confirmation link to ${email}. Open it to activate your account.` };
+  return {
+    success: `Almost there! We sent a confirmation link to ${email}.`,
+    data: { pendingUserId: data.user.id, email },
+  };
+}
+
+/**
+ * Polled by the sign-up screen so that confirming the email on ANY device lets the
+ * original device continue automatically. Only reveals whether this (unguessable) user id
+ * has been confirmed.
+ */
+export async function confirmationStatus(userId: string): Promise<{ confirmed: boolean }> {
+  if (!z.string().uuid().safeParse(userId).success) return { confirmed: false };
+  const { data } = await createSupabaseAdminClient().auth.admin.getUserById(userId);
+  return { confirmed: Boolean(data.user?.email_confirmed_at) };
+}
+
+export async function resendConfirmation(email: string): Promise<ActionState> {
+  const parsed = emailSchema.safeParse(email);
+  if (!parsed.success) return { error: firstError(parsed.error) };
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.auth.resend({ type: "signup", email: parsed.data, options: { emailRedirectTo: callbackUrl("/portal") } });
+  if (error) return { error: error.status === 429 ? "Please wait a minute before requesting another email." : error.message };
+  return { success: "A new confirmation email is on its way." };
 }
 
 export async function signInAction(_: ActionState, form: FormData): Promise<ActionState> {

@@ -1,12 +1,15 @@
 import Link from "next/link";
-import type { PaymentMethod, Prisma } from "@prisma/client";
+import type { PaymentMethod } from "@prisma/client";
 import { IconCreditCard } from "@tabler/icons-react";
+import { LinkButton } from "@/components/ui/button";
 import { FilterBar } from "@/components/ui/filter-bar";
 import { Field, Input, Select } from "@/components/ui/form";
 import { EmptyState, PageBody, PageHeader } from "@/components/ui/page";
 import { PAGE_SIZE, Pagination, pageFrom } from "@/components/ui/pagination";
 import { requireBackOffice } from "@/lib/auth";
-import { formatDate, parseDate } from "@/lib/dates";
+import { paymentWhere } from "@/domain/filters";
+import { exportHref } from "@/components/ui/export";
+import { formatDate } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { formatINR } from "@/lib/money";
 import { PAYMENT_METHODS } from "../invoices/payment-methods";
@@ -18,10 +21,7 @@ export default async function PaymentsPage({ searchParams }: { searchParams: Pro
   const params = await searchParams;
   const page = pageFrom(params.page);
   const method = PAYMENT_METHODS.some((m) => m.value === params.method) ? (params.method as PaymentMethod) : undefined;
-  const where: Prisma.PaymentWhereInput = {
-    method,
-    ...(params.from || params.to ? { paymentDate: { gte: params.from ? parseDate(params.from) : undefined, lte: params.to ? parseDate(params.to) : undefined } } : {}),
-  };
+  const where = paymentWhere(params);
   const [payments, total, sum] = await Promise.all([
     db.payment.findMany({ where, include: { invoice: { select: { id: true, number: true, customerName: true } } }, orderBy: [{ paymentDate: "desc" }, { createdAt: "desc" }], skip: (page - 1) * PAGE_SIZE, take: PAGE_SIZE }),
     db.payment.count({ where }),
@@ -30,7 +30,18 @@ export default async function PaymentsPage({ searchParams }: { searchParams: Pro
 
   return (
     <>
-      <PageHeader icon={IconCreditCard} title="Payments" />
+      <PageHeader
+        icon={IconCreditCard}
+        title="Payments"
+        actions={
+          <>
+          <LinkButton href={exportHref("payments", params)}>Export CSV</LinkButton>
+          <LinkButton href="/payments/reconcile" variant="primary">
+            Reconcile bank statement
+          </LinkButton>
+          </>
+        }
+      />
       <PageBody>
         <div className="card overflow-hidden">
           <FilterBar resetHref="/payments">

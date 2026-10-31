@@ -1,7 +1,9 @@
 import "server-only";
 import { cache } from "react";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import type { Profile, Role } from "@prisma/client";
+import { AUTH_USER_HEADER, decodeAuthUser } from "@/lib/auth-header";
 import { db } from "@/lib/db";
 import { adminEmails } from "@/lib/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -41,12 +43,18 @@ export async function ensureProfile(authUser: { id: string; email?: string; user
   });
 }
 
-/** The signed-in user with their role, or null. Cached per request. */
+/**
+ * The signed-in user with their role, or null. Cached per request.
+ * Uses the identity the middleware already verified for this request; falls back to asking
+ * Supabase directly if the middleware did not run.
+ */
 export const getCurrentUser = cache(async (): Promise<CurrentUser | null> => {
-  const supabase = await createSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const requestHeaders = await headers();
+  let user = requestHeaders.has(AUTH_USER_HEADER) ? decodeAuthUser(requestHeaders.get(AUTH_USER_HEADER)) : undefined;
+  if (user === undefined) {
+    const supabase = await createSupabaseServerClient();
+    user = (await supabase.auth.getUser()).data.user;
+  }
   if (!user) return null;
   const profile = await ensureProfile(user);
   if (!profile.isActive) return null;

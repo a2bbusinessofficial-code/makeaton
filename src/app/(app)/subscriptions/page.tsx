@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Prisma, SubscriptionState } from "@prisma/client";
+import type { SubscriptionState } from "@prisma/client";
 import { IconCalendarRepeat } from "@tabler/icons-react";
 import { SUBSCRIPTION_STATES, SubscriptionStatus, subscriptionStateLabel } from "@/components/status";
 import { LinkButton } from "@/components/ui/button";
@@ -7,6 +7,8 @@ import { FilterBar } from "@/components/ui/filter-bar";
 import { Field, Input, Select } from "@/components/ui/form";
 import { EmptyState, PageBody, PageHeader } from "@/components/ui/page";
 import { PAGE_SIZE, Pagination, pageFrom } from "@/components/ui/pagination";
+import { subscriptionWhere } from "@/domain/filters";
+import { exportHref } from "@/components/ui/export";
 import { requireBackOffice } from "@/lib/auth";
 import { formatDate } from "@/lib/dates";
 import { db } from "@/lib/db";
@@ -23,17 +25,7 @@ export default async function SubscriptionsPage({ searchParams }: { searchParams
   const state = SUBSCRIPTION_STATES.includes(params.state as SubscriptionState) ? (params.state as SubscriptionState) : undefined;
   const q = params.q?.trim();
 
-  const where: Prisma.SubscriptionWhereInput = {
-    state,
-    planId: params.planId || undefined,
-    ...(q && {
-      OR: [
-        { number: { contains: q, mode: "insensitive" } },
-        { customer: { name: { contains: q, mode: "insensitive" } } },
-        { customer: { company: { contains: q, mode: "insensitive" } } },
-      ],
-    }),
-  };
+  const where = subscriptionWhere(params);
 
   const [subs, total, counts, plans] = await Promise.all([
     db.subscription.findMany({
@@ -55,9 +47,12 @@ export default async function SubscriptionsPage({ searchParams }: { searchParams
         icon={IconCalendarRepeat}
         title="Subscriptions"
         actions={
+          <>
+          <LinkButton href={exportHref("subscriptions", params)}>Export CSV</LinkButton>
           <LinkButton href="/subscriptions/new" variant="primary">
             New quotation
           </LinkButton>
+          </>
         }
       />
       <PageBody>
