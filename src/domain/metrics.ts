@@ -22,7 +22,9 @@ export async function getDashboardMetrics({ from, to, planId }: MetricsFilter) {
   const now = today();
   const toExclusive = addDays(to, 1);
 
-  const [kpis] = await db.$queryRaw<Record<string, unknown>[]>`
+  // Independent aggregates run in parallel.
+  const [[kpis], [mrr], series, byState, aging] = await Promise.all([
+    db.$queryRaw<Record<string, unknown>[]>`
     SELECT
       (SELECT COUNT(*) FROM "Subscription" s WHERE s."state" = 'ACTIVE' ${planClause(planId)}) AS active,
       (SELECT COUNT(*) FROM "Subscription" s WHERE s."state" = 'ACTIVE' AND s."isPaused" ${planClause(planId)}) AS paused,
@@ -37,9 +39,8 @@ export async function getDashboardMetrics({ from, to, planId }: MetricsFilter) {
       (SELECT COALESCE(SUM(i."total" - i."amountPaid"), 0) FROM "Invoice" i JOIN "Subscription" s ON s."id" = i."subscriptionId"
         WHERE i."state" = 'CONFIRMED' AND i."dueDate" < ${now} ${planClause(planId)}) AS overdue_amount,
       (SELECT COUNT(*) FROM "Invoice" i JOIN "Subscription" s ON s."id" = i."subscriptionId"
-        WHERE i."state" = 'DRAFT' ${planClause(planId)}) AS drafts`;
-
-  const [mrr] = await db.$queryRaw<Record<string, unknown>[]>`
+        WHERE i."state" = 'DRAFT' ${planClause(planId)}) AS drafts`,
+    db.$queryRaw<Record<string, unknown>[]>`
     SELECT
       COALESCE((SELECT ${MRR_EXPR} FROM "SubscriptionLine" l JOIN "Subscription" s ON s."id" = l."subscriptionId" JOIN "Plan" p ON p."id" = s."planId"
         WHERE s."state" = 'ACTIVE' AND NOT s."isPaused" AND l."isActive" ${planClause(planId)}), 0) AS mrr,
@@ -48,9 +49,8 @@ export async function getDashboardMetrics({ from, to, planId }: MetricsFilter) {
       COALESCE((SELECT ${MRR_EXPR} FROM "SubscriptionLine" l JOIN "Subscription" s ON s."id" = l."subscriptionId" JOIN "Plan" p ON p."id" = s."planId"
         WHERE s."state" IN ('ACTIVE', 'CLOSED') AND s."startDate" >= ${from} AND s."startDate" < ${toExclusive} AND l."isActive" ${planClause(planId)}), 0) AS new_mrr,
       COALESCE((SELECT ${MRR_EXPR} FROM "SubscriptionLine" l JOIN "Subscription" s ON s."id" = l."subscriptionId" JOIN "Plan" p ON p."id" = s."planId"
-        WHERE s."state" = 'ACTIVE' AND s."endDate" BETWEEN ${now} AND ${addDays(now, 30)} AND l."isActive" ${planClause(planId)}), 0) AS renewing_mrr`;
-
-  const series = await db.$queryRaw<{ month: Date; invoiced: unknown; collected: unknown }[]>`
+        WHERE s."state" = 'ACTIVE' AND s."endDate" BETWEEN ${now} AND ${addDays(now, 30)} AND l."isActive" ${planClause(planId)}), 0) AS renewing_mrr`,
+    db.$queryRaw<{ month: Date; invoiced: unknown; collected: unknown }[]>`
     WITH months AS (
       SELECT generate_series(date_trunc('month', ${now}::date) - interval '5 months', date_trunc('month', ${now}::date), interval '1 month')::date AS month
     )
@@ -59,12 +59,10 @@ export async function getDashboardMetrics({ from, to, planId }: MetricsFilter) {
         WHERE i."state" IN ('CONFIRMED', 'PAID') AND date_trunc('month', i."invoiceDate") = m.month ${planClause(planId)}) AS invoiced,
       (SELECT COALESCE(SUM(pm."amount"), 0) FROM "Payment" pm JOIN "Invoice" i ON i."id" = pm."invoiceId" JOIN "Subscription" s ON s."id" = i."subscriptionId"
         WHERE date_trunc('month', pm."paymentDate") = m.month ${planClause(planId)}) AS collected
-    FROM months m ORDER BY m.month`;
-
-  const byState = await db.$queryRaw<{ state: string; count: unknown }[]>`
-    SELECT s."state", COUNT(*) AS count FROM "Subscription" s WHERE TRUE ${planClause(planId)} GROUP BY s."state"`;
-
-  const aging = await db.$queryRaw<{ bucket: string; amount: unknown; count: unknown }[]>`
+    FROM months m ORDER BY m.month`,
+    db.$queryRaw<{ state: string; count: unknown }[]>`
+    SELECT s."state", COUNT(*) AS count FROM "Subscription" s WHERE TRUE ${planClause(planId)} GROUP BY s."state"`,
+    db.$queryRaw<{ bucket: string; amount: unknown; count: unknown }[]>`
     SELECT CASE
         WHEN ${now}::date - i."dueDate" <= 30 THEN '1–30 days'
         WHEN ${now}::date - i."dueDate" <= 60 THEN '31–60 days'
@@ -73,7 +71,8 @@ export async function getDashboardMetrics({ from, to, planId }: MetricsFilter) {
       SUM(i."total" - i."amountPaid") AS amount, COUNT(*) AS count
     FROM "Invoice" i JOIN "Subscription" s ON s."id" = i."subscriptionId"
     WHERE i."state" = 'CONFIRMED' AND i."dueDate" < ${now} ${planClause(planId)}
-    GROUP BY 1 ORDER BY MIN(${now}::date - i."dueDate")`;
+    GROUP BY 1 ORDER BY MIN(${now}::date - i."dueDate")`,
+  ]);
 
   const mrrValue = Math.round(num(mrr.mrr));
   return {
