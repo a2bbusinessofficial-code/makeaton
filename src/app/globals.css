@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* Design tokens — minimal, Twenty-CRM inspired: neutral grays, thin borders, 13px UI text. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --color-bg: #ffffff;
+  --color-app: #f7f7f7;
+  --color-sidebar: #f7f7f7;
+  --color-hover: rgba(0, 0, 0, 0.04);
+  --color-line: #ebebeb;
+  --color-line-soft: #f1f1f1;
+  --color-ink: #333333;
+  --color-ink-2: #666666;
+  --color-ink-3: #999999;
+  --color-accent: #1961ed;
+  --color-accent-soft: #e8efff;
+  --color-danger: #c4161c;
+  --text-ui: 13px;
+}
+
+html {
+  background: var(--color-app);
+}
+
+/* 13px UI text like Twenty; rem stays 16px so spacing and control heights are not shrunk. */
+body {
+  background: var(--color-app);
+  color: var(--color-ink);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .input {
+    @apply h-8 w-full rounded-md border border-line bg-white px-2.5 text-ui text-ink outline-none transition placeholder:text-ink-3 focus:border-accent focus:ring-2 focus:ring-accent-soft disabled:bg-app disabled:text-ink-3;
+  }
+  textarea.input {
+    @apply h-auto min-h-16 py-2;
+  }
+  .label {
+    @apply mb-1 block text-xs font-medium text-ink-2;
+  }
+  .card {
+    @apply rounded-lg border border-line bg-white;
+  }
+  .table {
+    @apply w-full border-collapse text-ui;
+  }
+  .table th {
+    @apply h-8 border-b border-line px-3 text-left text-xs font-medium whitespace-nowrap text-ink-3;
+  }
+  .table td {
+    @apply h-9 border-b border-line-soft px-3 whitespace-nowrap;
+  }
+  .table tbody tr {
+    @apply transition-colors hover:bg-hover;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
