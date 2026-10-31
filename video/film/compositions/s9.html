@@ -1,0 +1,105 @@
+<template>
+  <style>
+    #root{position:absolute;inset:0;overflow:hidden;font-family:"Inter"}
+    
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-700-normal.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");font-weight:800}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-900-normal.woff2") format("woff2");font-weight:900}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2");font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+.ground{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.16) 1.6px,transparent 1.8px);background-size:30px 30px}
+.abs{position:absolute}
+.card{background:#fff;border:4px solid #111;box-shadow:10px 10px 0 #111}
+.pill{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 22px;border:3px solid #111;border-radius:999px;box-shadow:5px 5px 0 #111;font:700 24px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;background:#fff;color:#111;white-space:nowrap}
+.pill img{width:28px;height:28px}
+.h1{font:900 84px/0.95 "Inter";letter-spacing:-0.03em;text-transform:uppercase;color:#111}
+.h2{font:900 54px/1 "Inter";letter-spacing:-0.02em;text-transform:uppercase;color:#111}
+.sticker{position:absolute;display:flex;align-items:center;gap:18px;padding:18px 26px;border:4px solid #111;box-shadow:8px 8px 0 #111;font:900 36px/1.05 "Inter";letter-spacing:-0.01em;text-transform:uppercase;color:#111;white-space:nowrap}
+.sticker .ico{width:56px;height:56px;border:3px solid #111;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.sticker .ico img{width:36px;height:36px}
+.browser{position:absolute;background:#fff;border:4px solid #111;box-shadow:14px 14px 0 #111}
+.browser .bar{height:52px;border-bottom:4px solid #111;display:flex;align-items:center;gap:10px;padding:0 16px;background:#FFFBF2}
+.browser .bar i{width:18px;height:18px;border:3px solid #111;display:block}
+.browser .url{position:relative;margin-left:14px;flex:1;height:32px;border:3px solid #111;border-radius:999px;background:#fff;overflow:hidden}
+.browser .url span{position:absolute;left:16px;top:0;line-height:26px;font:700 16px/26px "Space Grotesk";letter-spacing:.04em;color:#111}
+.view{position:relative;overflow:hidden;background:#f7f7f7}
+.shot{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.shot img{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.cursor{position:absolute;left:0;top:0;width:46px;height:56px;z-index:50}
+.star{position:absolute;clip-path:polygon(50% 0%,61% 30%,95% 20%,72% 47%,98% 75%,63% 70%,50% 100%,37% 70%,2% 75%,28% 47%,5% 20%,39% 30%);background:#111}
+.star b{position:absolute;inset:7px;clip-path:inherit;display:block}
+.stripes{position:absolute;border:4px solid #111;background:repeating-linear-gradient(45deg,#111 0 10px,transparent 10px 26px)}
+.tick{display:inline-flex;width:44px;height:44px;border:3px solid #111;background:#fff;align-items:center;justify-content:center;flex:none}
+.tick img{width:30px;height:30px}
+.label{font:700 22px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;color:#111}
+
+  </style>
+  <div id="root" data-composition-id="s9" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div class="ground" style="background:#FFB3E1"></div>
+    <div class="dots"></div>
+    
+  <div class="pill" id="s9-tag" style="left:90px;top:60px;background:#fff"><img src="assets/icons/user-circle.svg" alt=""> Customer portal · Karan</div>
+  
+  <div class="browser" id="s9b" style="left:90px;top:140px;width:1188px;z-index:20">
+    <div class="bar"><i style="background:#FFB3E1"></i><i style="background:#FFDD72"></i><i style="background:#B8EFA2"></i>
+      <div class="url"><span id="s9b-u0" style="opacity:1">makeaton.vercel.app/portal</span><span id="s9b-u1" style="opacity:0">makeaton.vercel.app/portal/invoices/someone-else</span></div></div>
+    <div class="view" style="width:1180px;height:664px"><div class="shot" id="s9b-shot"><img id="s9b-i0" src="assets/screens/portal.png" style="opacity:1" alt=""><img id="s9b-i1" src="assets/screens/22-portal-sub-paused.png" style="opacity:0" alt=""><img id="s9b-i2" src="assets/screens/23-portal-addon-off.png" style="opacity:0" alt=""><img id="s9b-i3" src="assets/screens/portal-plans.png" style="opacity:0" alt=""><img id="s9b-i4" src="assets/screens/portal-invoice.png" style="opacity:0" alt=""><img id="s9b-i5" src="assets/screens/24-portal-other-customer-404.png" style="opacity:0" alt=""></div></div>
+  </div>
+  <div class="abs h2" id="s9-h" style="left:1350px;top:140px;width:520px;font-size:50px">Self-service,<br>no emails</div>
+  <div class="card abs" id="s9-a0" style="left:1350px;top:290px;width:500px;height:80px;display:flex;align-items:center;gap:16px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#FFE7BA">
+      <div class="tick" style="background:#fff"><img src="assets/icons/check.svg" alt=""></div><div style="font:900 32px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Accept quotes</div></div><div class="card abs" id="s9-a1" style="left:1350px;top:390px;width:500px;height:80px;display:flex;align-items:center;gap:16px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#AEE6FF">
+      <div class="tick" style="background:#fff"><img src="assets/icons/clock.svg" alt=""></div><div style="font:900 32px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Pause</div></div><div class="card abs" id="s9-a2" style="left:1350px;top:490px;width:500px;height:80px;display:flex;align-items:center;gap:16px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#B8EFA2">
+      <div class="tick" style="background:#fff"><img src="assets/icons/calendar-repeat.svg" alt=""></div><div style="font:900 32px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Renew</div></div><div class="card abs" id="s9-a3" style="left:1350px;top:590px;width:500px;height:80px;display:flex;align-items:center;gap:16px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#FFDD72">
+      <div class="tick" style="background:#fff"><img src="assets/icons/bolt.svg" alt=""></div><div style="font:900 32px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Switch add-ons</div></div><div class="card abs" id="s9-a4" style="left:1350px;top:690px;width:500px;height:80px;display:flex;align-items:center;gap:16px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#fff">
+      <div class="tick" style="background:#fff"><img src="assets/icons/box.svg" alt=""></div><div style="font:900 32px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Subscribe</div></div><div class="card abs" id="s9-a5" style="left:1350px;top:790px;width:500px;height:80px;display:flex;align-items:center;gap:16px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#AEE6FF">
+      <div class="tick" style="background:#fff"><img src="assets/icons/file-invoice.svg" alt=""></div><div style="font:900 32px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Download invoices</div></div>
+  <div class="sticker" id="s9-own" style="left:280px;top:690px;background:#FFDD72;font-size:56px;z-index:40;padding:24px 34px"><div class="ico" style="width:72px;height:72px"><img src="assets/icons/lock.svg" alt=""></div>Only their own data</div>
+  </div>
+  <script>
+    (function(){
+    const tl = gsap.timeline({ paused: true });
+    
+const Z = {};
+function zoomState(g, px, py, z){ const S=g.s*z; let x=g.w/2-px*S, y=g.h/2-py*S;
+  x=Math.min(0,Math.max(g.w-1920*S,x)); y=Math.min(0,Math.max(g.h-1080*S,y)); return {S,x,y}; }
+function zoom(tl, g, px, py, z, at, dur, ease){ const st=zoomState(g,px,py,z); Z[g.id]={px,py,z};
+  if(dur===0){ tl.set("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y},at); }
+  else tl.to("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y,duration:dur||0.9,ease:ease||"power3.inOut"},at); }
+function pt(g, px, py, zs){ const st=zoomState(g,zs[0],zs[1],zs[2]); return [g.left+4+st.x+px*st.S, g.top+4+52+st.y+py*st.S]; }
+function swap(tl, g, from, to, at, mode){ const a="#"+g.id+"-i"+from, b="#"+g.id+"-i"+to;
+  if(mode==="whip"){ tl.to(a,{x:-260,opacity:0,duration:0.22,ease:"power3.in"},at); tl.fromTo(b,{x:260,opacity:0},{x:0,opacity:1,duration:0.38,ease:"expo.out"},at+0.16); }
+  else { tl.to(a,{opacity:0,duration:0.25,ease:"none"},at); tl.fromTo(b,{opacity:0},{opacity:1,duration:0.25,ease:"none"},at); } }
+function url(tl, g, from, to, at){ tl.to("#"+g.id+"-u"+from,{opacity:0,y:-14,duration:0.18},at); tl.fromTo("#"+g.id+"-u"+to,{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power3.out"},at+0.1); }
+function frameIn(tl, sel, at, from){ from=from||{y:140,rotation:3}; tl.fromTo(sel,{opacity:0,y:from.y||0,x:from.x||0,rotation:from.rotation||0},{opacity:1,y:0,x:0,rotation:0,duration:0.9,ease:"expo.out"},at); }
+function stamp(tl, sel, at, rot){ rot=rot||0; tl.fromTo(sel,{opacity:0,scale:1.55,rotation:rot-7},{opacity:1,scale:1,rotation:rot,duration:0.5,ease:"back.out(1.5)"},at); }
+function pop(tl, sel, at, rot){ rot=rot||0; tl.fromTo(sel,{opacity:0,scale:0.4,rotation:rot},{opacity:1,scale:1,rotation:rot,duration:0.45,ease:"back.out(1.8)"},at); }
+function slideIn(tl, sel, at, dx, rot){ tl.fromTo(sel,{opacity:0,x:dx,rotation:rot||0},{opacity:1,x:0,rotation:rot||0,duration:0.7,ease:"expo.out"},at); }
+function click(tl, cur, x, y, at, travel){ tl.to(cur,{x:x-4,y:y-3,duration:travel||0.7,ease:"power3.inOut"},at-(travel||0.7)-0.05);
+  tl.to(cur,{scale:0.8,duration:0.07,ease:"power2.in"},at); tl.to(cur,{scale:1,duration:0.18,ease:"back.out(2)"},at+0.07); }
+function count(tl, sel, from, to, at, dur, fmt){ const o={v:from}; tl.to(o,{v:to,duration:dur,ease:"power2.out",onUpdate:()=>{document.querySelector(sel).textContent=fmt(o.v);}},at); }
+const inr=(v)=>Math.round(v).toLocaleString("en-IN");
+
+    
+  const g={"id":"s9b","left":90,"top":140,"w":1180,"h":664,"s":0.6145833333333334};
+  zoom(tl,g,960,330,1.45,0,0);
+  pop(tl,"#s9-tag",0.05,-2);
+  frameIn(tl,"#s9b",0.05,{y:180,rotation:2});
+  tl.fromTo("#s9-h",{opacity:0,y:30},{opacity:1,y:0,duration:0.7,ease:"expo.out"},0.55);
+  const T=[2.56,3.57,4.10,4.69,5.80,6.75];
+  for(let k=0;k<6;k++) slideIn(tl,"#s9-a"+k,T[k],240,k%2?1:-1);
+  swap(tl,g,0,1,T[1]); zoom(tl,g,1150,200,1.6,T[1],0.6);
+  swap(tl,g,1,2,T[3]); zoom(tl,g,960,440,1.45,T[3],0.6);
+  swap(tl,g,2,3,T[4],"whip"); zoom(tl,g,960,420,1.25,T[4],0.6);
+  swap(tl,g,3,4,T[5],"whip"); zoom(tl,g,960,380,1.45,T[5],0.6);
+  const t404=7.95;
+  tl.to("#s9b",{x:12,duration:0.04,repeat:7,yoyo:true,ease:"none"},t404);
+  swap(tl,g,4,5,t404+0.05); url(tl,g,0,1,t404+0.05); zoom(tl,g,960,540,1.3,t404+0.05,0.01);
+  stamp(tl,"#s9-own",t404+0.45,-4);
+  
+    window.__timelines["s9"] = tl;
+    })();
+  </script>
+</template>

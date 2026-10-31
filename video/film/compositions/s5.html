@@ -1,0 +1,139 @@
+<template>
+  <style>
+    #root{position:absolute;inset:0;overflow:hidden;font-family:"Inter"}
+    
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-700-normal.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");font-weight:800}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-900-normal.woff2") format("woff2");font-weight:900}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2");font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+.ground{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.16) 1.6px,transparent 1.8px);background-size:30px 30px}
+.abs{position:absolute}
+.card{background:#fff;border:4px solid #111;box-shadow:10px 10px 0 #111}
+.pill{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 22px;border:3px solid #111;border-radius:999px;box-shadow:5px 5px 0 #111;font:700 24px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;background:#fff;color:#111;white-space:nowrap}
+.pill img{width:28px;height:28px}
+.h1{font:900 84px/0.95 "Inter";letter-spacing:-0.03em;text-transform:uppercase;color:#111}
+.h2{font:900 54px/1 "Inter";letter-spacing:-0.02em;text-transform:uppercase;color:#111}
+.sticker{position:absolute;display:flex;align-items:center;gap:18px;padding:18px 26px;border:4px solid #111;box-shadow:8px 8px 0 #111;font:900 36px/1.05 "Inter";letter-spacing:-0.01em;text-transform:uppercase;color:#111;white-space:nowrap}
+.sticker .ico{width:56px;height:56px;border:3px solid #111;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.sticker .ico img{width:36px;height:36px}
+.browser{position:absolute;background:#fff;border:4px solid #111;box-shadow:14px 14px 0 #111}
+.browser .bar{height:52px;border-bottom:4px solid #111;display:flex;align-items:center;gap:10px;padding:0 16px;background:#FFFBF2}
+.browser .bar i{width:18px;height:18px;border:3px solid #111;display:block}
+.browser .url{position:relative;margin-left:14px;flex:1;height:32px;border:3px solid #111;border-radius:999px;background:#fff;overflow:hidden}
+.browser .url span{position:absolute;left:16px;top:0;line-height:26px;font:700 16px/26px "Space Grotesk";letter-spacing:.04em;color:#111}
+.view{position:relative;overflow:hidden;background:#f7f7f7}
+.shot{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.shot img{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.cursor{position:absolute;left:0;top:0;width:46px;height:56px;z-index:50}
+.star{position:absolute;clip-path:polygon(50% 0%,61% 30%,95% 20%,72% 47%,98% 75%,63% 70%,50% 100%,37% 70%,2% 75%,28% 47%,5% 20%,39% 30%);background:#111}
+.star b{position:absolute;inset:7px;clip-path:inherit;display:block}
+.stripes{position:absolute;border:4px solid #111;background:repeating-linear-gradient(45deg,#111 0 10px,transparent 10px 26px)}
+.tick{display:inline-flex;width:44px;height:44px;border:3px solid #111;background:#fff;align-items:center;justify-content:center;flex:none}
+.tick img{width:30px;height:30px}
+.label{font:700 22px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;color:#111}
+
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div class="ground" style="background:#B8EFA2"></div>
+    <div class="dots"></div>
+    
+  <div class="pill" id="s5-tag" style="left:90px;top:60px;background:#fff"><img src="assets/icons/user-circle.svg" alt=""> Admin · Asha</div>
+  <div class="abs h1" id="s5-h" style="left:90px;top:150px;width:520px;font-size:76px">Builds the catalog</div>
+  <div class="card abs" id="s5-l0" style="left:90px;top:370px;width:470px;height:78px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#FFB3E1">
+      <div class="tick" style="background:#fff"><img src="assets/icons/box.svg" alt=""></div><div style="font:900 34px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Variants</div></div><div class="card abs" id="s5-l1" style="left:90px;top:466px;width:470px;height:78px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#AEE6FF">
+      <div class="tick" style="background:#fff"><img src="assets/icons/calendar-repeat.svg" alt=""></div><div style="font:900 34px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Plans</div></div><div class="card abs" id="s5-l2" style="left:90px;top:562px;width:470px;height:78px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#FFE7BA">
+      <div class="tick" style="background:#fff"><img src="assets/icons/check.svg" alt=""></div><div style="font:900 34px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Rules</div></div><div class="card abs" id="s5-l3" style="left:90px;top:658px;width:470px;height:78px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#FFDD72">
+      <div class="tick" style="background:#fff"><img src="assets/icons/receipt-tax.svg" alt=""></div><div style="font:900 34px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">GST</div></div><div class="card abs" id="s5-l4" style="left:90px;top:754px;width:470px;height:78px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#fff">
+      <div class="tick" style="background:#fff"><img src="assets/icons/discount.svg" alt=""></div><div style="font:900 34px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Discounts</div></div><div class="card abs" id="s5-l5" style="left:90px;top:850px;width:470px;height:78px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111;background:#AEE6FF">
+      <div class="tick" style="background:#fff"><img src="assets/icons/users.svg" alt=""></div><div style="font:900 34px/1 Inter;text-transform:uppercase;letter-spacing:-0.02em">Staff</div></div>
+  
+  <div class="browser" id="s5b" style="left:650px;top:120px;width:1198px;z-index:20">
+    <div class="bar"><i style="background:#FFB3E1"></i><i style="background:#FFDD72"></i><i style="background:#B8EFA2"></i>
+      <div class="url"><span id="s5b-u0" style="opacity:1">makeaton.vercel.app/products/crm</span><span id="s5b-u1" style="opacity:0">makeaton.vercel.app/plans/diwali-offer</span><span id="s5b-u2" style="opacity:0">makeaton.vercel.app/taxes</span><span id="s5b-u3" style="opacity:0">makeaton.vercel.app/discounts</span><span id="s5b-u4" style="opacity:0">makeaton.vercel.app/users</span></div></div>
+    <div class="view" style="width:1190px;height:669px"><div class="shot" id="s5b-shot"><img id="s5b-i0" src="assets/screens/product-detail.png" style="opacity:1" alt=""><img id="s5b-i1" src="assets/screens/plan-detail.png" style="opacity:0" alt=""><img id="s5b-i2" src="assets/screens/taxes.png" style="opacity:0" alt=""><img id="s5b-i3" src="assets/screens/discounts.png" style="opacity:0" alt=""><img id="s5b-i4" src="assets/screens/18-admin-team-invite.png" style="opacity:0" alt=""></div></div>
+  </div>
+  <svg class="cursor" id="s5-cur" viewBox="0 0 46 56"><path d="M4 3 L4 46 L15 35 L23 53 L31 49 L23 32 L39 32 Z" fill="#111" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
+  <div class="sticker" id="s5-odoo" style="left:720px;top:830px;background:#FFDD72;z-index:30"><div class="ico"><img src="assets/icons/box.svg" alt=""></div>Brand: Odoo <span style="margin-left:8px;padding:6px 14px;background:#111;color:#fff">+₹<span id="s5-n">0</span></span></div>
+  <div class="sticker" id="s5-slot" style="left:720px;top:830px;background:#AEE6FF;z-index:30">
+    <div class="ico"><img src="assets/icons/calendar-repeat.svg" alt=""></div>Billed
+    <div style="position:relative;height:44px;width:250px;overflow:hidden;border:3px solid #111;background:#fff"><div id="s5-roll" style="position:absolute;left:0;top:0;width:100%">
+    <div style="height:44px;line-height:44px;text-align:center">Daily</div><div style="height:44px;line-height:44px;text-align:center">Weekly</div><div style="height:44px;line-height:44px;text-align:center">Monthly</div><div style="height:44px;line-height:44px;text-align:center">Yearly</div></div></div></div>
+  <div class="pill" id="s5-o0" style="left:1180px;top:840px;background:#B8EFA2;z-index:30;font-size:26px">Pause ✓</div><div class="pill" id="s5-o1" style="left:1410px;top:840px;background:#FFB3E1;z-index:30;font-size:26px">Renew ✓</div><div class="pill" id="s5-o2" style="left:1640px;top:840px;background:#FFE7BA;z-index:30;font-size:26px">Auto-close ✓</div>
+  <div class="sticker" id="s5-gst" style="left:760px;top:830px;background:#FFE7BA;z-index:30"><div class="ico"><img src="assets/icons/receipt-tax.svg" alt=""></div>GST 0 · 5 · 12 · 18%</div>
+  <div class="sticker" id="s5-lock" style="left:1460px;top:180px;background:#FFB3E1;z-index:30;font-size:40px"><div class="ico"><img src="assets/icons/lock.svg" alt=""></div>Admin only</div>
+  <div class="pill" id="s5-lim" style="left:760px;top:850px;background:#fff;z-index:30;font-size:26px">Dates · usage limits · min. purchase</div>
+  <div class="sticker" id="s5-staff" style="left:1250px;top:820px;background:#B8EFA2;z-index:30"><div class="ico"><img src="assets/icons/users.svg" alt=""></div>Only admins add staff</div>
+  </div>
+  <script>
+    (function(){
+    const tl = gsap.timeline({ paused: true });
+    
+const Z = {};
+function zoomState(g, px, py, z){ const S=g.s*z; let x=g.w/2-px*S, y=g.h/2-py*S;
+  x=Math.min(0,Math.max(g.w-1920*S,x)); y=Math.min(0,Math.max(g.h-1080*S,y)); return {S,x,y}; }
+function zoom(tl, g, px, py, z, at, dur, ease){ const st=zoomState(g,px,py,z); Z[g.id]={px,py,z};
+  if(dur===0){ tl.set("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y},at); }
+  else tl.to("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y,duration:dur||0.9,ease:ease||"power3.inOut"},at); }
+function pt(g, px, py, zs){ const st=zoomState(g,zs[0],zs[1],zs[2]); return [g.left+4+st.x+px*st.S, g.top+4+52+st.y+py*st.S]; }
+function swap(tl, g, from, to, at, mode){ const a="#"+g.id+"-i"+from, b="#"+g.id+"-i"+to;
+  if(mode==="whip"){ tl.to(a,{x:-260,opacity:0,duration:0.22,ease:"power3.in"},at); tl.fromTo(b,{x:260,opacity:0},{x:0,opacity:1,duration:0.38,ease:"expo.out"},at+0.16); }
+  else { tl.to(a,{opacity:0,duration:0.25,ease:"none"},at); tl.fromTo(b,{opacity:0},{opacity:1,duration:0.25,ease:"none"},at); } }
+function url(tl, g, from, to, at){ tl.to("#"+g.id+"-u"+from,{opacity:0,y:-14,duration:0.18},at); tl.fromTo("#"+g.id+"-u"+to,{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power3.out"},at+0.1); }
+function frameIn(tl, sel, at, from){ from=from||{y:140,rotation:3}; tl.fromTo(sel,{opacity:0,y:from.y||0,x:from.x||0,rotation:from.rotation||0},{opacity:1,y:0,x:0,rotation:0,duration:0.9,ease:"expo.out"},at); }
+function stamp(tl, sel, at, rot){ rot=rot||0; tl.fromTo(sel,{opacity:0,scale:1.55,rotation:rot-7},{opacity:1,scale:1,rotation:rot,duration:0.5,ease:"back.out(1.5)"},at); }
+function pop(tl, sel, at, rot){ rot=rot||0; tl.fromTo(sel,{opacity:0,scale:0.4,rotation:rot},{opacity:1,scale:1,rotation:rot,duration:0.45,ease:"back.out(1.8)"},at); }
+function slideIn(tl, sel, at, dx, rot){ tl.fromTo(sel,{opacity:0,x:dx,rotation:rot||0},{opacity:1,x:0,rotation:rot||0,duration:0.7,ease:"expo.out"},at); }
+function click(tl, cur, x, y, at, travel){ tl.to(cur,{x:x-4,y:y-3,duration:travel||0.7,ease:"power3.inOut"},at-(travel||0.7)-0.05);
+  tl.to(cur,{scale:0.8,duration:0.07,ease:"power2.in"},at); tl.to(cur,{scale:1,duration:0.18,ease:"back.out(2)"},at+0.07); }
+function count(tl, sel, from, to, at, dur, fmt){ const o={v:from}; tl.to(o,{v:to,duration:dur,ease:"power2.out",onUpdate:()=>{document.querySelector(sel).textContent=fmt(o.v);}},at); }
+const inr=(v)=>Math.round(v).toLocaleString("en-IN");
+
+    
+  const g={"id":"s5b","left":650,"top":120,"w":1190,"h":669,"s":0.6197916666666666};
+  zoom(tl,g,960,540,1,0,0);
+  pop(tl,"#s5-tag",0.05,-2);
+  tl.fromTo("#s5-h",{opacity:0,y:40},{opacity:1,y:0,duration:0.7,ease:"expo.out"},0.15);
+  frameIn(tl,"#s5b",0.1,{x:300,rotation:4});
+  const LT=[2.33,5.86,7.51,10.19,11.48,13.27];
+  for(let k=0;k<6;k++) slideIn(tl,"#s5-l"+k,LT[k],-260,k%2?1:-1);
+  // a · variants
+  zoom(tl,g,1700,230,1.9,2.25,1.0);
+  stamp(tl,"#s5-odoo",3.35,-3);
+  count(tl,"#s5-n",0,560,3.85,0.8,(v)=>inr(v));
+  tl.to("#s5-odoo",{opacity:0,y:40,duration:0.25,ease:"power2.in"},5.40);
+  // b · plans
+  swap(tl,g,0,1,5.45,"whip"); url(tl,g,0,1,5.45);
+  zoom(tl,g,577,300,1.65,5.45,0.6);
+  stamp(tl,"#s5-slot",5.85,-2);
+  tl.fromTo("#s5-roll",{y:0},{y:-132,duration:1.1,ease:"power3.inOut"},6.10);
+  tl.to("#s5-slot",{opacity:0,y:40,duration:0.25,ease:"power2.in"},7.35);
+  zoom(tl,g,560,470,2.3,7.35,0.8);
+  pop(tl,"#s5-o0",7.80,-3); pop(tl,"#s5-o1",8.30,2); pop(tl,"#s5-o2",8.90,-2);
+  tl.to(["#s5-o0","#s5-o1","#s5-o2"],{opacity:0,y:40,duration:0.25,stagger:0.04,ease:"power2.in"},9.80);
+  // c · GST
+  swap(tl,g,1,2,9.85,"whip"); url(tl,g,1,2,9.85);
+  zoom(tl,g,650,240,1.8,9.85,0.6);
+  stamp(tl,"#s5-gst",10.20,2);
+  tl.to("#s5-gst",{opacity:0,y:40,duration:0.25,ease:"power2.in"},11.20);
+  // d · discounts
+  swap(tl,g,2,3,11.25,"whip"); url(tl,g,2,3,11.25);
+  zoom(tl,g,1000,170,1.45,11.25,0.6);
+  stamp(tl,"#s5-lock",11.55,6);
+  pop(tl,"#s5-lim",12.05,-1);
+  tl.to(["#s5-lock","#s5-lim"],{opacity:0,duration:0.25},12.95);
+  // e · team
+  swap(tl,g,3,4,13.00,"whip"); url(tl,g,3,4,13.00);
+  zoom(tl,g,528,330,1.8,13.00,0.6);
+  const c=pt(g,317,419,[528,330,1.8]);
+  tl.fromTo("#s5-cur",{x:1500,y:1000,opacity:0},{opacity:1,duration:0.2},13.15);
+  click(tl,"#s5-cur",c[0],c[1],14.10,0.7);
+  stamp(tl,"#s5-staff",13.45,-3);
+  
+    window.__timelines["s5"] = tl;
+    })();
+  </script>
+</template>

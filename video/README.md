@@ -9,6 +9,10 @@
 | `voice-samples.mp3` | Four female voice options to choose from |
 | `screens/` | 1920×1080 captures of every page: `public/`, `admin/`, `customer/`, and `actions/` (live interactions such as billing runs and payments) |
 | `tools/` | Scripts used to capture the screens and build the storyboard |
+| `brightloop-demo.mp4` | **The rendered film** (95 s, 1080p, pastel neo-brutalism) |
+| `film/` | HyperFrames project for the film. `node build/build.mjs` regenerates `index.html` + `compositions/`; `npx hyperframes preview` opens it in Studio; `npx hyperframes render -o out.mp4` renders. See `film/REVIEW.md`. |
+
+Music: NIVIRO – Flares [NCS Release], provided by NoCopyrightSounds. Credit it wherever the video is published.
 
 ## Re-capturing the screens locally
 

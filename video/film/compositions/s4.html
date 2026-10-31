@@ -1,0 +1,103 @@
+<template>
+  <style>
+    #root{position:absolute;inset:0;overflow:hidden;font-family:"Inter"}
+    
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-700-normal.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");font-weight:800}
+@font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-900-normal.woff2") format("woff2");font-weight:900}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2");font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+.ground{position:absolute;inset:0}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.16) 1.6px,transparent 1.8px);background-size:30px 30px}
+.abs{position:absolute}
+.card{background:#fff;border:4px solid #111;box-shadow:10px 10px 0 #111}
+.pill{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 22px;border:3px solid #111;border-radius:999px;box-shadow:5px 5px 0 #111;font:700 24px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;background:#fff;color:#111;white-space:nowrap}
+.pill img{width:28px;height:28px}
+.h1{font:900 84px/0.95 "Inter";letter-spacing:-0.03em;text-transform:uppercase;color:#111}
+.h2{font:900 54px/1 "Inter";letter-spacing:-0.02em;text-transform:uppercase;color:#111}
+.sticker{position:absolute;display:flex;align-items:center;gap:18px;padding:18px 26px;border:4px solid #111;box-shadow:8px 8px 0 #111;font:900 36px/1.05 "Inter";letter-spacing:-0.01em;text-transform:uppercase;color:#111;white-space:nowrap}
+.sticker .ico{width:56px;height:56px;border:3px solid #111;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.sticker .ico img{width:36px;height:36px}
+.browser{position:absolute;background:#fff;border:4px solid #111;box-shadow:14px 14px 0 #111}
+.browser .bar{height:52px;border-bottom:4px solid #111;display:flex;align-items:center;gap:10px;padding:0 16px;background:#FFFBF2}
+.browser .bar i{width:18px;height:18px;border:3px solid #111;display:block}
+.browser .url{position:relative;margin-left:14px;flex:1;height:32px;border:3px solid #111;border-radius:999px;background:#fff;overflow:hidden}
+.browser .url span{position:absolute;left:16px;top:0;line-height:26px;font:700 16px/26px "Space Grotesk";letter-spacing:.04em;color:#111}
+.view{position:relative;overflow:hidden;background:#f7f7f7}
+.shot{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.shot img{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.cursor{position:absolute;left:0;top:0;width:46px;height:56px;z-index:50}
+.star{position:absolute;clip-path:polygon(50% 0%,61% 30%,95% 20%,72% 47%,98% 75%,63% 70%,50% 100%,37% 70%,2% 75%,28% 47%,5% 20%,39% 30%);background:#111}
+.star b{position:absolute;inset:7px;clip-path:inherit;display:block}
+.stripes{position:absolute;border:4px solid #111;background:repeating-linear-gradient(45deg,#111 0 10px,transparent 10px 26px)}
+.tick{display:inline-flex;width:44px;height:44px;border:3px solid #111;background:#fff;align-items:center;justify-content:center;flex:none}
+.tick img{width:30px;height:30px}
+.label{font:700 22px/1 "Space Grotesk";letter-spacing:.08em;text-transform:uppercase;color:#111}
+
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div class="ground" style="background:#FFB3E1"></div>
+    <div class="dots"></div>
+    
+  <div class="pill" id="s4-tag" style="left:90px;top:60px;background:#fff"><img src="assets/icons/user-circle.svg" alt=""> Sign up</div>
+  
+  <div class="browser" id="s4b" style="left:90px;top:150px;width:1048px;z-index:20">
+    <div class="bar"><i style="background:#FFB3E1"></i><i style="background:#FFDD72"></i><i style="background:#B8EFA2"></i>
+      <div class="url"><span id="s4b-u0" style="opacity:1">makeaton.vercel.app/signup</span><span id="s4b-u1" style="opacity:0">makeaton.vercel.app/signup</span></div></div>
+    <div class="view" style="width:1040px;height:585px"><div class="shot" id="s4b-shot"><img id="s4b-i0" src="assets/screens/01-signup-weak.png" style="opacity:1" alt=""><img id="s4b-i1" src="assets/screens/02-signup-strong.png" style="opacity:0" alt=""><img id="s4b-i2" src="assets/screens/03-signup-duplicate-email.png" style="opacity:0" alt=""></div></div>
+  </div>
+  <div class="abs h2" id="s4-h" style="left:1240px;top:150px;width:620px">Strong passwords,<br>checked live</div>
+  <div class="card abs" id="s4-r0" style="left:1240px;top:300px;width:600px;height:74px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111">
+      <div class="tick" id="s4-t0"><img id="s4-ti0" src="assets/icons/check.svg" alt=""></div><div style="font:800 28px/1 Inter;text-transform:uppercase;letter-spacing:-0.01em">More than 8 characters</div></div><div class="card abs" id="s4-r1" style="left:1240px;top:392px;width:600px;height:74px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111">
+      <div class="tick" id="s4-t1"><img id="s4-ti1" src="assets/icons/check.svg" alt=""></div><div style="font:800 28px/1 Inter;text-transform:uppercase;letter-spacing:-0.01em">An uppercase letter</div></div><div class="card abs" id="s4-r2" style="left:1240px;top:484px;width:600px;height:74px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111">
+      <div class="tick" id="s4-t2"><img id="s4-ti2" src="assets/icons/check.svg" alt=""></div><div style="font:800 28px/1 Inter;text-transform:uppercase;letter-spacing:-0.01em">A lowercase letter</div></div><div class="card abs" id="s4-r3" style="left:1240px;top:576px;width:600px;height:74px;display:flex;align-items:center;gap:18px;padding:0 18px;box-shadow:6px 6px 0 #111">
+      <div class="tick" id="s4-t3"><img id="s4-ti3" src="assets/icons/check.svg" alt=""></div><div style="font:800 28px/1 Inter;text-transform:uppercase;letter-spacing:-0.01em">A special character</div></div>
+  <div class="sticker" id="s4-one" style="left:1240px;top:700px;background:#FFDD72"><div class="ico"><img src="assets/icons/shield-check.svg" alt=""></div>One account per email</div>
+  <div class="sticker" id="s4-mail" style="left:1290px;top:850px;background:#AEE6FF"><div class="ico"><img src="assets/icons/mail.svg" alt=""></div>Reset link by email</div>
+  </div>
+  <script>
+    (function(){
+    const tl = gsap.timeline({ paused: true });
+    
+const Z = {};
+function zoomState(g, px, py, z){ const S=g.s*z; let x=g.w/2-px*S, y=g.h/2-py*S;
+  x=Math.min(0,Math.max(g.w-1920*S,x)); y=Math.min(0,Math.max(g.h-1080*S,y)); return {S,x,y}; }
+function zoom(tl, g, px, py, z, at, dur, ease){ const st=zoomState(g,px,py,z); Z[g.id]={px,py,z};
+  if(dur===0){ tl.set("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y},at); }
+  else tl.to("#"+g.id+"-shot",{scale:st.S,x:st.x,y:st.y,duration:dur||0.9,ease:ease||"power3.inOut"},at); }
+function pt(g, px, py, zs){ const st=zoomState(g,zs[0],zs[1],zs[2]); return [g.left+4+st.x+px*st.S, g.top+4+52+st.y+py*st.S]; }
+function swap(tl, g, from, to, at, mode){ const a="#"+g.id+"-i"+from, b="#"+g.id+"-i"+to;
+  if(mode==="whip"){ tl.to(a,{x:-260,opacity:0,duration:0.22,ease:"power3.in"},at); tl.fromTo(b,{x:260,opacity:0},{x:0,opacity:1,duration:0.38,ease:"expo.out"},at+0.16); }
+  else { tl.to(a,{opacity:0,duration:0.25,ease:"none"},at); tl.fromTo(b,{opacity:0},{opacity:1,duration:0.25,ease:"none"},at); } }
+function url(tl, g, from, to, at){ tl.to("#"+g.id+"-u"+from,{opacity:0,y:-14,duration:0.18},at); tl.fromTo("#"+g.id+"-u"+to,{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power3.out"},at+0.1); }
+function frameIn(tl, sel, at, from){ from=from||{y:140,rotation:3}; tl.fromTo(sel,{opacity:0,y:from.y||0,x:from.x||0,rotation:from.rotation||0},{opacity:1,y:0,x:0,rotation:0,duration:0.9,ease:"expo.out"},at); }
+function stamp(tl, sel, at, rot){ rot=rot||0; tl.fromTo(sel,{opacity:0,scale:1.55,rotation:rot-7},{opacity:1,scale:1,rotation:rot,duration:0.5,ease:"back.out(1.5)"},at); }
+function pop(tl, sel, at, rot){ rot=rot||0; tl.fromTo(sel,{opacity:0,scale:0.4,rotation:rot},{opacity:1,scale:1,rotation:rot,duration:0.45,ease:"back.out(1.8)"},at); }
+function slideIn(tl, sel, at, dx, rot){ tl.fromTo(sel,{opacity:0,x:dx,rotation:rot||0},{opacity:1,x:0,rotation:rot||0,duration:0.7,ease:"expo.out"},at); }
+function click(tl, cur, x, y, at, travel){ tl.to(cur,{x:x-4,y:y-3,duration:travel||0.7,ease:"power3.inOut"},at-(travel||0.7)-0.05);
+  tl.to(cur,{scale:0.8,duration:0.07,ease:"power2.in"},at); tl.to(cur,{scale:1,duration:0.18,ease:"back.out(2)"},at+0.07); }
+function count(tl, sel, from, to, at, dur, fmt){ const o={v:from}; tl.to(o,{v:to,duration:dur,ease:"power2.out",onUpdate:()=>{document.querySelector(sel).textContent=fmt(o.v);}},at); }
+const inr=(v)=>Math.round(v).toLocaleString("en-IN");
+
+    
+  const g={"id":"s4b","left":90,"top":150,"w":1040,"h":585,"s":0.5416666666666666};
+  zoom(tl,g,960,520,1.9,0,0);
+  frameIn(tl,"#s4b",0.05,{y:160,rotation:-3});
+  pop(tl,"#s4-tag",0.1,-2);
+  tl.fromTo("#s4-h",{opacity:0,x:60},{opacity:1,x:0,duration:0.7,ease:"expo.out"},0.3);
+  for(let k=0;k<4;k++){ slideIn(tl,"#s4-r"+k,0.45+k*0.09,80,0); }
+  swap(tl,g,0,1,1.50);
+  for(let k=0;k<4;k++){ const t=1.65+k*0.16;
+    tl.to("#s4-t"+k,{backgroundColor:"#B8EFA2",duration:0.12},t); tl.fromTo("#s4-ti"+k,{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.35,ease:"back.out(2.4)"},t); }
+  swap(tl,g,1,2,2.75);
+  zoom(tl,g,960,700,1.9,2.75,0.8);
+  stamp(tl,"#s4-one",2.95,-3);
+  tl.to("#s4b",{x:-10,duration:0.05,repeat:5,yoyo:true,ease:"none"},3.55);
+  tl.fromTo("#s4-mail",{opacity:0,x:700,rotation:8},{opacity:1,x:0,rotation:2,duration:0.8,ease:"expo.out"},4.80);
+  
+    window.__timelines["s4"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,27 @@
+<template>
+  <style>#root{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+  .slab{position:absolute;left:0;top:0;width:1920px;height:1080px;border:8px solid #111}
+  .slab .band{position:absolute;inset:0;margin:auto;width:100%;height:90px;top:0;bottom:0;border-top:6px solid #111;border-bottom:6px solid #111;background:repeating-linear-gradient(45deg,#111 0 12px,transparent 12px 30px)}</style>
+  <div id="root" data-composition-id="wipes" data-width="1920" data-height="1080" data-layout-ignore>
+    <div class="slab" id="w1" style="background:#FFDD72"><div class="band"></div></div>
+    <div class="slab" id="w2" style="background:#AEE6FF"><div class="band"></div></div>
+    <div class="slab" id="w3" style="background:#FFB3E1"><div class="band"></div></div>
+    <div class="slab" id="w4" style="background:#B8EFA2"><div class="band"></div></div>
+    <div class="slab" id="w5" style="background:#FFE7BA"><div class="band"></div></div>
+    <div class="slab" id="w6" style="background:#FFDD72"><div class="band"></div></div>
+    <div class="slab" id="w7" style="background:#AEE6FF"><div class="band"></div></div>
+    <div class="slab" id="w8" style="background:#FFB3E1"><div class="band"></div></div>
+    <div class="slab" id="w9" style="background:#B8EFA2"><div class="band"></div></div>
+    <div class="slab" id="w10" style="background:#111"><div class="band"></div></div>
+  </div>
+  <script>(function(){
+    const tl = gsap.timeline({ paused: true });
+    const W=[{"id":"w1","at":6,"color":"#FFDD72","d":"x"},{"id":"w2","at":12.2,"color":"#AEE6FF","d":"y"},{"id":"w3","at":17.2,"color":"#FFB3E1","d":"-x"},{"id":"w4","at":24.2,"color":"#B8EFA2","d":"y"},{"id":"w5","at":39.6,"color":"#FFE7BA","d":"x"},{"id":"w6","at":48.5,"color":"#FFDD72","d":"-y"},{"id":"w7","at":57.9,"color":"#AEE6FF","d":"x"},{"id":"w8","at":67.4,"color":"#FFB3E1","d":"y"},{"id":"w9","at":77.7,"color":"#B8EFA2","d":"-x"},{"id":"w10","at":88.5,"color":"#111","d":"x"}];
+    for(const w of W){ const ax=w.d.includes("x")?"x":"y", sg=w.d.startsWith("-")?-1:1, size=ax==="x"?1960:1120;
+      const a={}, b={}, c={}; a[ax]=sg*size; b[ax]=0; c[ax]=-sg*size;
+      tl.set("#"+w.id,Object.assign({},a),0);
+      tl.fromTo("#"+w.id,a,Object.assign({duration:0.32,ease:"power3.in"},b),w.at-0.32);
+      tl.to("#"+w.id,Object.assign({duration:0.42,ease:"power3.out"},c),w.at); }
+    tl.set({},{},95.3);
+    window.__timelines["wipes"] = tl; })();</script>
+</template>
