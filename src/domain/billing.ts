@@ -12,6 +12,9 @@ import type { SubscriptionWithRelations } from "./subscriptions";
 
 export class BillingError extends Error {}
 
+/** Generous limits so queued transactions wait for a pooled connection instead of failing. */
+const TX_OPTIONS = { maxWait: 15_000, timeout: 30_000 };
+
 // ───────────────────────────── Pricing a subscription ─────────────────────────────
 
 /** The minimum shape pricing needs — satisfied by every subscription query in the app. */
@@ -151,7 +154,7 @@ export async function billSubscription(subscriptionId: string, asOf: Date, opts:
       if (opts.dryRun) return;
       const finished = sub.endDate && cursor && cursor > sub.endDate;
       await tx.subscription.update({ where: { id: sub.id }, data: { nextInvoiceDate: finished ? null : cursor } });
-    });
+    }, TX_OPTIONS);
     outcome.status = outcome.invoices > 0 ? "created" : "skipped";
     if (outcome.invoices === 0) outcome.message = "already billed";
   } catch (error) {
@@ -175,7 +178,9 @@ export async function runBilling({ trigger, asOf = today(), autoConfirm = false,
   });
 
   const outcomes: BillingOutcome[] = [];
-  const BATCH = 10;
+  // Small batches: on serverless each instance has a small connection pool, and every
+  // subscription is billed in its own transaction.
+  const BATCH = 4;
   for (let i = 0; i < due.length; i += BATCH) {
     const batch = due.slice(i, i + BATCH);
     outcomes.push(...(await Promise.all(batch.map((s) => billSubscription(s.id, asOf, { autoConfirm, dryRun })))));
