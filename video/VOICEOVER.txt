@@ -1,0 +1,11 @@
+Subscriptions in a spreadsheet. Invoices typed by hand. Renewals... forgotten.
+Meet Brightloop: one platform to run plans, subscriptions, billing, payments and revenue.
+Admins set it up, staff run it day to day, and customers serve themselves.
+Sign-up checks strong passwords live, allows one account per email, and resets passwords by email.
+The admin builds the catalog: variants, so Odoo adds five hundred and sixty rupees; plans from daily to yearly, with pause, renew and auto-close rules; G.S.T.; and discounts with limits. Only the admin adds staff.
+Staff turn a template into a quote in seconds, then into an active subscription, with every step on a timeline the whole team can see.
+On billing day, one click invoices every due subscription, with G.S.T. worked out. Click again: nothing is ever billed twice, or skipped.
+Payments, even partial ones, close invoices automatically, and the Action Center plus daily reminders chase renewals and overdue bills.
+Customers do it all themselves: accept quotes, pause, renew, switch add-ons, subscribe and download invoices, and they only ever see their own data.
+And finally, the number nobody could answer: live recurring revenue, what's collected, what's owed, and what's at risk. Fast, even at three thousand subscriptions.
+Brightloop. Subscriptions, finally under control.
