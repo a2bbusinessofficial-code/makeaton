@@ -31,8 +31,8 @@ export function ActionForm({
   }, [state, resetOnSuccess]);
 
   // React resets a form after its `action` runs, which would wipe what the user typed when
-  // validation fails. Submitting through a transition keeps the values; we reset explicitly
-  // on success instead (resetOnSuccess).
+  // validation fails. Once hydrated, we submit through a transition instead (values are kept)
+  // and reset explicitly on success (resetOnSuccess).
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isPending) return;
@@ -42,7 +42,9 @@ export function ActionForm({
 
   return (
     <PendingContext.Provider value={isPending}>
-      <form ref={ref} onSubmit={onSubmit} className={clsx("space-y-3", className)}>
+      {/* `action` stays as the pre-hydration fallback: React renders it as a POST to the server
+          action, so an early click never submits fields (e.g. passwords) in the URL. */}
+      <form ref={ref} action={formAction} onSubmit={onSubmit} className={clsx("space-y-3", className)}>
         {children}
         <FormMessage state={state} />
       </form>
