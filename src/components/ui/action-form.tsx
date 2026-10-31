@@ -1,12 +1,15 @@
 "use client";
 
 import clsx from "clsx";
-import { useActionState, useEffect, useRef } from "react";
+import { createContext, startTransition, useActionState, useContext, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { buttonClass } from "./button";
 
 export type ActionState = { error?: string; success?: string } | undefined;
 export type FormAction = (state: ActionState, formData: FormData) => Promise<ActionState>;
+
+/** Pending state of the enclosing ActionForm (useFormStatus only tracks native form actions). */
+const PendingContext = createContext(false);
 
 /** Form bound to a server action, with inline error/success feedback. */
 export function ActionForm({
@@ -20,18 +23,30 @@ export function ActionForm({
   className?: string;
   resetOnSuccess?: boolean;
 }) {
-  const [state, formAction] = useActionState(action, undefined);
+  const [state, formAction, isPending] = useActionState(action, undefined);
   const ref = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (resetOnSuccess && state?.success) ref.current?.reset();
   }, [state, resetOnSuccess]);
 
+  // React resets a form after its `action` runs, which would wipe what the user typed when
+  // validation fails. Submitting through a transition keeps the values; we reset explicitly
+  // on success instead (resetOnSuccess).
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isPending) return;
+    const formData = new FormData(event.currentTarget);
+    startTransition(() => formAction(formData));
+  };
+
   return (
-    <form ref={ref} action={formAction} className={clsx("space-y-3", className)}>
-      {children}
-      <FormMessage state={state} />
-    </form>
+    <PendingContext.Provider value={isPending}>
+      <form ref={ref} onSubmit={onSubmit} className={clsx("space-y-3", className)}>
+        {children}
+        <FormMessage state={state} />
+      </form>
+    </PendingContext.Provider>
   );
 }
 
@@ -48,7 +63,8 @@ export function FormMessage({ state }: { state: ActionState }) {
 }
 
 export function SubmitButton({ children, variant = "primary", className, pendingLabel }: { children: React.ReactNode; variant?: "primary" | "secondary" | "danger" | "ghost"; className?: string; pendingLabel?: string }) {
-  const { pending } = useFormStatus();
+  const formStatus = useFormStatus();
+  const pending = useContext(PendingContext) || formStatus.pending;
   return (
     <button type="submit" disabled={pending} className={buttonClass(variant, className)}>
       {pending ? (pendingLabel ?? "Saving…") : children}
