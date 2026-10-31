@@ -1,11 +1,13 @@
 import Link from "next/link";
-import type { Prisma } from "@prisma/client";
 import { IconUsersGroup } from "@tabler/icons-react";
 import { Chip } from "@/components/ui/chip";
 import { FilterBar } from "@/components/ui/filter-bar";
 import { Field, Input } from "@/components/ui/form";
 import { PageBody, PageHeader, Section } from "@/components/ui/page";
 import { PAGE_SIZE, Pagination, pageFrom } from "@/components/ui/pagination";
+import { customerWhere } from "@/domain/filters";
+import { LinkButton } from "@/components/ui/button";
+import { exportHref } from "@/components/ui/export";
 import { requireBackOffice } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { createCustomer } from "./actions";
@@ -18,9 +20,7 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
   const params = await searchParams;
   const page = pageFrom(params.page);
   const q = params.q?.trim();
-  const where: Prisma.CustomerWhereInput = q
-    ? { OR: [{ name: { contains: q, mode: "insensitive" } }, { email: { contains: q, mode: "insensitive" } }, { company: { contains: q, mode: "insensitive" } }] }
-    : {};
+  const where = customerWhere(params);
 
   const [customers, total] = await Promise.all([
     db.customer.findMany({
@@ -35,7 +35,7 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
 
   return (
     <>
-      <PageHeader icon={IconUsersGroup} title="Customers" />
+      <PageHeader icon={IconUsersGroup} title="Customers" actions={<LinkButton href={exportHref("customers", params)}>Export CSV</LinkButton>} />
       <PageBody>
         <div className="card overflow-hidden">
           <FilterBar resetHref="/customers">

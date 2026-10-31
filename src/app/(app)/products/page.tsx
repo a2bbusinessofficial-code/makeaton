@@ -47,7 +47,10 @@ export default async function ProductsPage() {
                   <td className="text-right text-ink-3 tabular-nums">{formatINR(p.costPrice)}</td>
                   <td>{p._count.variants}</td>
                   <td>{p._count.plans}</td>
-                  <td>{p.isActive ? <Chip color="green">Active</Chip> : <Chip>Archived</Chip>}</td>
+                  <td className="space-x-1">
+                    {p.isActive ? <Chip color="green">Active</Chip> : <Chip>Archived</Chip>}
+                    {p.salesPrice < p.costPrice && <Chip color="red">Below cost</Chip>}
+                  </td>
                 </tr>
               ))}
             </tbody>

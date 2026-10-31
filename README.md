@@ -27,7 +27,19 @@ One system to run **plans, subscriptions, recurring billing, payments and revenu
 | *"Renewals: remembered by whoever notices first"* | **Action center** (renewals due in 30 days, overdue invoices, expiring quotations) plus a **daily job** that sends **renewal reminders** and **overdue reminders** (+1/+7/+15 days), each sent once. |
 | *"Nobody can say how much recurring revenue the company actually has"* | **MRR / ARR, new MRR, churned MRR and revenue at risk** on the dashboard. |
 | *"Invoices go out wrong"* | **Billing preview (dry run)** shows exactly what billing day will produce, and **run history** records created / skipped / failed. |
-| Self-service | Customers **accept quotations, pause, renew, cancel, switch add-ons on/off, subscribe online and download invoices** without emailing anyone. |
+| *"Payments: matched to invoices by scrolling through bank statements"* | **Bank reconciliation**: upload the bank's CSV statement and every credit is matched to an outstanding invoice (by invoice number in the narration, by amount and customer name, or by a unique amount), then recorded in one click. |
+| *"Revenue reports: built manually"* | **CSV export** of invoices, subscriptions, payments and customers, using the same filters as the screen. |
+| Self-service | Customers **accept quotations, pause, renew, cancel, switch add-ons on/off, subscribe online and download invoices** without emailing anyone. Sign up on a laptop and confirm on your phone: the laptop **continues automatically**. |
+
+## Screenshots
+
+| Finance dashboard | Subscription |
+|---|---|
+| ![Dashboard](docs/screenshots/dashboard.png) | ![Subscription](docs/screenshots/subscription.png) |
+| **GST tax invoice** | **Bank reconciliation** |
+| ![Invoice](docs/screenshots/invoice.png) | ![Reconciliation](docs/screenshots/reconcile.png) |
+| **Customer portal** | **Branded auth email** |
+| ![Portal](docs/screenshots/portal.png) | ![Email](docs/screenshots/email.png) |
 
 ---
 
@@ -46,6 +58,33 @@ src/
 prisma/          Schema, SQL migration (constraints + RLS), seed
 ```
 
+### Data model
+
+```mermaid
+erDiagram
+  Profile ||--o| Customer : "portal login"
+  Customer ||--o{ Subscription : has
+  Customer ||--o{ Invoice : billed
+  Product ||--o{ ProductVariant : "variants (+price extra)"
+  Product ||--o{ Plan : "sold as"
+  Product }o--o{ Tax : "default GST"
+  Plan ||--o{ Subscription : "billing rules"
+  Plan ||--o{ QuotationTemplate : ""
+  QuotationTemplate ||--o{ QuotationTemplateLine : lines
+  PaymentTerm ||--o{ Subscription : "due days"
+  Subscription ||--o{ SubscriptionLine : lines
+  SubscriptionLine }o--o{ Tax : GST
+  Subscription }o--o{ Discount : "attached rules"
+  Discount }o--o{ Product : "product scope"
+  Subscription ||--o{ Invoice : "one per period (unique)"
+  Invoice ||--o{ InvoiceLine : lines
+  Invoice ||--o{ Payment : "paid by"
+  Invoice ||--o{ DiscountUsage : "usage counted"
+  Discount ||--o{ DiscountUsage : ""
+```
+
+Also: `BillingRun` (audit of each run), `Activity` (timeline), `Sequence` (gap-free numbers), `ReminderLog` (each reminder sent once).
+
 **Design decisions**
 
 - **Money as integer paise, rates as basis points**, so there are no floating-point rounding errors. Discounts are spread across lines with the largest-remainder method, so not a single paisa is lost.
@@ -54,6 +93,7 @@ prisma/          Schema, SQL migration (constraints + RLS), seed
 - **Authorization lives on the server.** Every server action checks the role. Customer queries are always scoped to the signed-in customer, so changing an ID in the URL returns 404.
 - **Gap-free document numbers** (`SUB/2026/00001`, `INV/2026/00001`) come from an atomic sequence inside the same transaction. Invoices get their number on confirmation, as in Odoo.
 - **Month-end-safe billing dates:** a subscription started on 31 Jan bills on 28/29 Feb, then on 31 Mar.
+- **Fast on serverless:** functions run in the same region as the database (`vercel.json → regions`), the session is verified once per request in middleware, and dashboard aggregates run in parallel in SQL.
 - **Emails never block business actions:** if SMTP fails, the invoice is still confirmed and the user is told. Reserved demo domains (`example.com`) are never emailed.
 
 ---
@@ -71,7 +111,7 @@ npm run dev
 Checks:
 
 ```bash
-npm test          # unit tests: pricing, GST split, discounts, billing dates, password policy
+npm test          # unit tests: pricing, GST split, discounts, billing dates, password policy, bank matching
 npm run typecheck
 npm run lint
 ```
@@ -85,7 +125,7 @@ npm run lint
    - *Authentication → Rate Limits*: raise the email limit (default 30/hour) for demos.
    - *Authentication → Emails → SMTP Settings*: enable custom SMTP: host `smtp.gmail.com`, port `465`, your Gmail address and a **Google App Password**. Supabase then sends sign-up, reset, invite and email-change emails through your Gmail.
    - *Authentication → Emails → Templates*: paste the branded templates from [`supabase/templates/`](supabase/templates) (Confirm sign up, Reset password, Invite user, Change email address). Their `token_hash` links are verified by `/auth/confirm`, so they work on any device or browser.
-3. **Vercel:** import the GitHub repo and add every variable from `.env.example`. The build runs migrations and seeds the database automatically (`npm run build`). `vercel.json` schedules the daily job at 06:00 IST.
+3. **Vercel:** import the GitHub repo and add every variable from `.env.example`. If your Supabase project is not in Seoul, change `regions` in `vercel.json` to the [Vercel region](https://vercel.com/docs/edge-network/regions) closest to it. The build runs migrations and seeds the database automatically (`npm run build`). `vercel.json` schedules the daily job at 06:00 IST.
 
 ---
 

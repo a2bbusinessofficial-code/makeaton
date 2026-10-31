@@ -1,14 +1,16 @@
 import Link from "next/link";
-import type { Prisma } from "@prisma/client";
 import { IconFileInvoice } from "@tabler/icons-react";
 import { InvoiceStatus } from "@/components/status";
 import { ActionButton } from "@/components/ui/action-form";
+import { LinkButton } from "@/components/ui/button";
+import { exportHref } from "@/components/ui/export";
 import { FilterBar } from "@/components/ui/filter-bar";
 import { Field, Input, Select } from "@/components/ui/form";
 import { EmptyState, PageBody, PageHeader } from "@/components/ui/page";
 import { PAGE_SIZE, Pagination, pageFrom } from "@/components/ui/pagination";
 import { requireBackOffice } from "@/lib/auth";
-import { formatDate, parseDate, today } from "@/lib/dates";
+import { invoiceWhere } from "@/domain/filters";
+import { formatDate } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { formatINR } from "@/lib/money";
 import { confirmSelected } from "./actions";
@@ -25,33 +27,13 @@ const STATUS_FILTERS = [
   { value: "cancelled", label: "Cancelled" },
 ];
 
-function statusWhere(status: string | undefined): Prisma.InvoiceWhereInput {
-  switch (status) {
-    case "outstanding":
-      return { state: "CONFIRMED" };
-    case "overdue":
-      return { state: "CONFIRMED", dueDate: { lt: today() } };
-    case "paid":
-      return { state: "PAID" };
-    case "draft":
-      return { state: "DRAFT" };
-    case "cancelled":
-      return { state: "CANCELLED" };
-    default:
-      return {};
-  }
-}
 
 export default async function InvoicesPage({ searchParams }: { searchParams: Promise<Search> }) {
   await requireBackOffice();
   const params = await searchParams;
   const page = pageFrom(params.page);
   const q = params.q?.trim();
-  const where: Prisma.InvoiceWhereInput = {
-    ...statusWhere(params.status),
-    ...(params.from || params.to ? { invoiceDate: { gte: params.from ? parseDate(params.from) : undefined, lte: params.to ? parseDate(params.to) : undefined } } : {}),
-    ...(q && { OR: [{ number: { contains: q, mode: "insensitive" } }, { customerName: { contains: q, mode: "insensitive" } }] }),
-  };
+  const where = invoiceWhere(params);
 
   const [invoices, total, totals, drafts] = await Promise.all([
     db.invoice.findMany({ where, orderBy: [{ invoiceDate: "desc" }, { createdAt: "desc" }], skip: (page - 1) * PAGE_SIZE, take: PAGE_SIZE }),
@@ -66,11 +48,14 @@ export default async function InvoicesPage({ searchParams }: { searchParams: Pro
         icon={IconFileInvoice}
         title="Invoices"
         actions={
-          drafts > 0 && (
+          <>
+          <LinkButton href={exportHref("invoices", params)}>Export CSV</LinkButton>
+          {drafts > 0 && (
             <ActionButton action={confirmSelected} variant="primary" confirm={`Confirm all ${drafts} draft invoice(s)?`}>
               Confirm all drafts ({drafts})
             </ActionButton>
-          )
+          )}
+          </>
         }
       />
       <PageBody>
