@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { requireRole } from "@/lib/auth";
+import { NavigationProgress } from "@/components/layout/navigation-progress";
 import { PortalNav } from "./portal-nav";
 
 /** Customer self-service portal: customers only ever see their own records. */
@@ -7,6 +8,7 @@ export default async function PortalLayout({ children }: { children: React.React
   const user = await requireRole("CUSTOMER");
   return (
     <div className="min-h-screen bg-white">
+      <NavigationProgress />
       <header className="no-print border-b border-line">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-2.5">
           <Link href="/portal" className="flex items-center gap-2">
