@@ -4,7 +4,7 @@
 
 ## Team
 
-- Aman Xavier (@AxZyzz): product, demo video and deployment.
+- Aman Xavier, Rahul V K, Anand S, Abhinav S B: product, demo video and deployment.
 
 
 One system to run **plans, subscriptions, recurring billing, payments and revenue reporting** for a subscription business, built for the Odoo hackathon problem statement *"Subscription Management System"*.
